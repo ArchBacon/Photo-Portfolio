@@ -4,6 +4,9 @@ module.exports = {
         "./templates/**/*.twig",
     ],
     theme: {
+        fontFamily: {
+            'montserrat': ['"Montserrat"', 'sans-serif'],
+        },
         extend: {},
     },
     plugins: [],
