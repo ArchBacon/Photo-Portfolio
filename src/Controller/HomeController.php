@@ -15,4 +15,10 @@ class HomeController extends AbstractController
     {
         return $this->render('home/index.html.twig');
     }
+
+    #[Route('/alt', name: 'app_home_alt')]
+    public function altHome(): Response
+    {
+        return $this->render('home/alt.html.twig');
+    }
 }
