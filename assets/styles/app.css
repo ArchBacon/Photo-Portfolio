@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Background Spotlight */
+body:before {
+    content: '';
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vh;
+    height: 100vh;
+    background: radial-gradient(ellipse at left top, #1E293B 0%, #000000 70%);
+    z-index: -100;
+}
