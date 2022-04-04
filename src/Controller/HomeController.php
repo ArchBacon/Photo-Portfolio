@@ -10,15 +10,33 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-    #[Route('/', name: 'app_home')]
+    #[Route('/', name: 'home_spaced')]
     public function index(): Response
     {
-        return $this->render('home/index.html.twig');
+        return $this->render('home/spaced.html.twig');
     }
 
-    #[Route('/alt', name: 'app_home_alt')]
-    public function altHome(): Response
+    #[Route('/spaced', name: 'home_spaced_multi')]
+    public function spaced(): Response
     {
-        return $this->render('home/alt.html.twig');
+        return $this->render('home/spaced-3-items.html.twig');
+    }
+
+    #[Route('/right', name: 'home_aligned_right')]
+    public function right(): Response
+    {
+        return $this->render('home/aligned-right.html.twig');
+    }
+
+    #[Route('/left', name: 'home_aligned_left')]
+    public function left(): Response
+    {
+        return $this->render('home/aligned-left.html.twig');
+    }
+
+    #[Route('/centered', name: 'home_centered')]
+    public function centered(): Response
+    {
+        return $this->render('home/centered.html.twig');
     }
 }
