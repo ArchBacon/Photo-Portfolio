@@ -16,6 +16,12 @@ class HomeController extends AbstractController
         return $this->render('home/spaced.html.twig');
     }
 
+    #[Route('/shifted', name: 'home_shifted')]
+    public function shifted(): Response
+    {
+        return $this->render('home/shifted.html.twig');
+    }
+
     #[Route('/spaced', name: 'home_spaced_multi')]
     public function spaced(): Response
     {
