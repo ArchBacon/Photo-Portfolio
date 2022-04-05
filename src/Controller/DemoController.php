@@ -22,45 +22,65 @@ class DemoController extends AbstractController
         }
     }
 
-    #[Route('/', name: '_index')]
-    public function index(): Response
+    /** Home Pages */
+    #[Route('/', name: '_home')]
+    public function home(): Response
     {
-        return $this->redirectToRoute('app_demo_pushed');
+        return $this->redirectToRoute('app_demo_home_shifted');
     }
 
-    #[Route('/pushed', name: '_pushed')]
+    #[Route('/home/pushed', name: '_home_pushed')]
     public function pushed(): Response
     {
         return $this->render('demo/home/pushed.html.twig');
     }
 
-    #[Route('/shifted', name: '_shifted')]
+    #[Route('/home/shifted', name: '_home_shifted')]
     public function shifted(): Response
     {
         return $this->render('demo/home/shifted.html.twig');
     }
 
-    #[Route('/centered', name: '_centered')]
+    #[Route('/home/centered', name: '_home_centered')]
     public function centered(): Response
     {
         return $this->render('demo/home/centered.html.twig');
     }
 
-    #[Route('/spaced', name: '_spaced')]
+    #[Route('/home/spaced', name: '_home_spaced')]
     public function spaced(): Response
     {
         return $this->render('demo/home/spaced.html.twig');
     }
 
-    #[Route('/left', name: '_left')]
+    #[Route('/home/left', name: '_home_left')]
     public function left(): Response
     {
         return $this->render('demo/home/left-aligned.html.twig');
     }
 
-    #[Route('/right', name: '_right')]
+    #[Route('/home/right', name: '_home_right')]
     public function right(): Response
     {
         return $this->render('demo/home/right-aligned.html.twig');
+    }
+
+    /** Home Pages */
+    #[Route('/contact', name: '_contact')]
+    public function contact(): Response
+    {
+        return $this->redirectToRoute('app_demo_contact_dropped');
+    }
+
+    #[Route('/contact/dropped', name: '_contact_dropped')]
+    public function dropped(): Response
+    {
+        return $this->render('demo/contact/dropped.html.twig');
+    }
+
+    #[Route('/contact/inline', name: '_contact_inline')]
+    public function inline(): Response
+    {
+        return $this->render('demo/contact/inline.html.twig');
     }
 }

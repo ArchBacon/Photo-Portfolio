@@ -18,12 +18,28 @@
 <header class="fixed top-0 w-full">
     <div class="flex flex-row justify-between mx-12 my-6 text-sm">
         <ul class="flex flex-row font-bold">
-            <li class="mr-10"><a href="{{ path('app_demo_pushed') }}" class="hover:text-white">Pushed</a></li>
-            <li class="mr-10"><a href="{{ path('app_demo_shifted') }}" class="hover:text-white">Shifted</a></li>
-            <li class="mr-10"><a href="{{ path('app_demo_centered') }}" class="hover:text-white">Centered</a></li>
-            <li class="mr-10"><a href="{{ path('app_demo_spaced') }}" class="hover:text-white">Spaced</a></li>
-            <li class="mr-10"><a href="{{ path('app_demo_left') }}" class="hover:text-white">Left</a></li>
-            <li class="mr-10"><a href="{{ path('app_demo_right') }}" class="hover:text-white">Right</a></li>
+            <li class="mr-10">
+                <div class="dropdown absolute">
+                    <a>Home</a>
+                    <div class="dropdown-content">
+                        <a href="{{ path('app_demo_home_pushed') }}">Pushed</a>
+                        <a href="{{ path('app_demo_home_shifted') }}">Shifted</a>
+                        <a href="{{ path('app_demo_home_centered') }}">Centered</a>
+                        <a href="{{ path('app_demo_home_spaced') }}">Spaced</a>
+                        <a href="{{ path('app_demo_home_left') }}">Left</a>
+                        <a href="{{ path('app_demo_home_right') }}">Right</a>
+                    </div>
+                </div>
+            </li>
+            <li class="mr-10">
+                <div class="dropdown absolute">
+                    <a>Contact</a>
+                    <div class="dropdown-content">
+                        <a href="{{ path('app_demo_contact_dropped') }}">Dropped</a>
+                        <a href="{{ path('app_demo_contact_inline') }}">Inline</a>
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
 </header>

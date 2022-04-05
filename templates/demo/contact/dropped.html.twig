@@ -1,0 +1,57 @@
+{% extends 'demo/base.html.twig' %}
+
+{% block title %}Website | Contact{% endblock %}
+
+{% block body %}
+    <div class="py-28 mx-44 mt-28">
+        <section class="mb-36 w-full my-0 mx-auto max-w-3xl">
+            <div class="uppercase absolute left-0 top-[12.5%] w-full text-center">
+                <span class="text-base font-bold">How to find me</span>
+                <hr>
+                <span class="text-4xl font-bold">Contact Me</span>
+            </div>
+        </section>
+
+        <section class="my-0 mx-auto flex flex-row">
+            <div class="w-2/6 mx-5">
+                <h4 class="text-3xl mb-5 w-full uppercase">
+                    <span class="text-xs block">Who am i?</span>
+                    <span class="text-white font-bold block">About me</span>
+                </h4>
+
+                <p class="">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porttitor ipsum mi, eu
+                    elementum eros vulputate in. Phasellus sed velit ultricies, dictum ligula sed, consectetur
+                    lorem. Nulla a suscipit quam. Proin mattis interdum metus ac iaculis. Nam tincidunt velit id .</p>
+            </div>
+            <div class="w-1/6"></div>
+            <div class="w-3/6 mx-5">
+                <div class="flex flex-row">
+                    <div class="w-full mr-2.5">
+                        <input type="text" id="contact_name" name="contact[name]" required="required" placeholder="Name">
+                    </div>
+
+                    <div class="w-full ml-2.5">
+                        <input type="email" id="contact_email" name="contact[email]" required="required" placeholder="Email">
+                    </div>
+                </div>
+
+                <div class="w-full">
+                    <textarea id="contact_content" name="contact[content]" required="required" placeholder="Message"></textarea>
+                </div>
+
+                <div class="flex justify-end">
+                    <button type="button" id="contact_submit" name="contact[submit]">Send Message</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="uppercase absolute left-0 bottom-[15%] w-3/12 text-right">
+            <a href="#" class="group">
+                <span class="text-base font-bold duration-700 ease-in-out mr-40 group-hover:mr-36">Return</span>
+                <hr>
+                <span class="text-4xl font-bold duration-700 ease-in-out mr-16 group-hover:mr-24">Back</span>
+            </a>
+        </div>
+    </div>
+{% endblock %}
