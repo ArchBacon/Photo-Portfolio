@@ -78,6 +78,12 @@ class DemoController extends AbstractController
         return $this->render('demo/contact/dropped.html.twig');
     }
 
+    #[Route('/contact/aligned', name: '_contact_aligned')]
+    public function aligned(): Response
+    {
+        return $this->render('demo/contact/aligned.html.twig');
+    }
+
     #[Route('/contact/inline', name: '_contact_inline')]
     public function inline(): Response
     {
