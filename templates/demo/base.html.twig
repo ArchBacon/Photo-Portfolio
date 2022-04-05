@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body class="bg-black font-montserrat text-white text-opacity-50">
+<header class="fixed top-0 w-full">
+    <div class="flex flex-row justify-between mx-12 my-6 text-sm">
+        <ul class="flex flex-row font-bold">
+            <li class="mr-10"><a href="{{ path('app_demo_pushed') }}" class="hover:text-white">Pushed</a></li>
+            <li class="mr-10"><a href="{{ path('app_demo_shifted') }}" class="hover:text-white">Shifted</a></li>
+            <li class="mr-10"><a href="{{ path('app_demo_centered') }}" class="hover:text-white">Centered</a></li>
+            <li class="mr-10"><a href="{{ path('app_demo_spaced') }}" class="hover:text-white">Spaced</a></li>
+            <li class="mr-10"><a href="{{ path('app_demo_left') }}" class="hover:text-white">Left</a></li>
+            <li class="mr-10"><a href="{{ path('app_demo_right') }}" class="hover:text-white">Right</a></li>
+        </ul>
+    </div>
+</header>
+
+{% block body %}{% endblock %}
+
+<footer class="fixed bottom-0 w-full">
+    <div class="flex flex-row justify-between mx-12 my-6 text-sm">
+        <ul class="flex flex-row font-bold">
+            <li class="mr-10"><a href="#" class="hover:text-white">Fb</a></li>
+            <li class="mr-10"><a href="#" class="hover:text-white">Tw</a></li>
+            <li class="mr-10"><a href="#" class="hover:text-white">In</a></li>
+            <li><a href="#" class="hover:text-white">Yt</a></li>
+        </ul>
+        <div class="uppercase font-bold">Copyright &copy; 2020. All Rights Reserved.</div>
+    </div>
+</footer>
+</body>
+</html>
