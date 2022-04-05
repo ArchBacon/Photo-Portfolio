@@ -11,11 +11,16 @@
 
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
+        <script src="{{ asset('feather.min.js') }}"></script>
     {% endblock %}
 </head>
 <body class="bg-black font-montserrat text-white text-opacity-50">
     {% include 'shared/header.html.twig' %}
     {% block body %}{% endblock %}
     {% include 'shared/footer.html.twig' %}
+
+    <script>
+        feather.replace()
+    </script>
 </body>
 </html>
