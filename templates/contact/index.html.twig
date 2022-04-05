@@ -3,23 +3,32 @@
 {% block title %}Website | Contact{% endblock %}
 
 {% block body %}
-    <div class="py-28 mx-44 mt-36">
-        <section class="mb-36 w-full my-0 mx-auto max-w-3xl">
-            <p class=" text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porttitor ipsum mi, eu
-                elementum eros vulputate in. Phasellus sed velit ultricies, dictum ligula sed, consectetur
-                lorem. Nulla a suscipit quam. Proin mattis interdum metus ac iaculis. Nam tincidunt velit id .</p>
+    <div class="py-28 mx-44 mt-28">
+        <section class="mb-52 w-full my-0 mx-auto max-w-3xl">
+            <div class="uppercase absolute left-0 top-[12.5%] w-full text-center">
+                <span class="text-base font-bold">How to find me</span>
+                <hr>
+                <span class="text-4xl font-bold">Contact Me</span>
+            </div>
         </section>
 
         <section class="my-0 mx-auto flex flex-row">
-            <div class="w-1/3 mx-5">
+            <div class="w-2/6 mx-5">
                 <h4 class="text-3xl mb-5 w-full uppercase">
-                    <span class="text-xs block">My Contacts and Socials</span>
-                    <span class="text-white font-bold block">How to Find Me</span>
+                    <span class="text-xs block">Who am i?</span>
+                    <span class="text-white font-bold block">About me</span>
                 </h4>
+
+                <p class="">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porttitor ipsum mi, eu
+                    elementum eros vulputate in. Phasellus sed velit ultricies, dictum ligula sed, consectetur
+                    lorem. Nulla a suscipit quam. Proin mattis interdum metus ac iaculis. Nam tincidunt velit id .</p>
             </div>
-            <div class="w-2/3 mx-5">
+            <div class="w-1/6"></div>
+            <div class="w-3/6 mx-5">
                 {{ form_start(form) }}
+
+                {{ form_widget(form._token) }}
 
                 <div class="flex flex-row">
                     <div class="w-full mr-2.5">
@@ -45,8 +54,7 @@
                     {{ form_widget(form.submit) }}
                 </div>
 
-
-                {{ form_end(form, {'render_rest': false}) }}
+                {{ form_end(form, {render_rest: false}) }}
             </div>
         </section>
     </div>
