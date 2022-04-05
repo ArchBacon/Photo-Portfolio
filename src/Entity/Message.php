@@ -28,12 +28,17 @@ class Message
     #[ORM\Column(type: 'datetime_immutable')]
     private DateTimeImmutable $createdAt;
 
+    public function __construct()
+    {
+        $this->createdAt = new DateTimeImmutable();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -45,7 +50,7 @@ class Message
         return $this;
     }
 
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -57,7 +62,7 @@ class Message
         return $this;
     }
 
-    public function getContent(): ?string
+    public function getContent(): string
     {
         return $this->content;
     }
@@ -69,7 +74,7 @@ class Message
         return $this;
     }
 
-    public function getCreatedAt(): ?DateTimeImmutable
+    public function getCreatedAt(): DateTimeImmutable
     {
         return $this->createdAt;
     }
