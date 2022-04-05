@@ -3,7 +3,7 @@
 {% block title %}Website | Contact{% endblock %}
 
 {% block body %}
-    <div class="py-28 mx-36 mt-36">
+    <div class="py-28 mx-44 mt-36">
         <section class="mb-36 w-full my-0 mx-auto max-w-3xl">
             <p class=" text-center">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porttitor ipsum mi, eu
@@ -11,10 +11,42 @@
                 lorem. Nulla a suscipit quam. Proin mattis interdum metus ac iaculis. Nam tincidunt velit id .</p>
         </section>
 
-        <section class="flex flex-row my-0 mx-auto max-w-3xl">
-            <div class="columns-4">Contact info</div>
-            <div class="columns-8">
-                {{ form(contact_form) }}
+        <section class="my-0 mx-auto flex flex-row">
+            <div class="w-1/3 mx-5">
+                <h4 class="text-3xl mb-5 w-full uppercase">
+                    <span class="text-xs block">My Contacts and Socials</span>
+                    <span class="text-white font-bold block">How to Find Me</span>
+                </h4>
+            </div>
+            <div class="w-2/3 mx-5">
+                {{ form_start(form) }}
+
+                <div class="flex flex-row">
+                    <div class="w-full mr-2.5">
+                        {{ form_errors(form.name) }}
+                        {{ form_widget(form.name) }}
+                        {{ form_help(form.name) }}
+                    </div>
+
+                    <div class="w-full ml-2.5">
+                        {{ form_errors(form.email) }}
+                        {{ form_widget(form.email) }}
+                        {{ form_help(form.email) }}
+                    </div>
+                </div>
+
+                <div class="w-full">
+                    {{ form_errors(form.content) }}
+                    {{ form_widget(form.content) }}
+                    {{ form_help(form.content) }}
+                </div>
+
+                <div class="flex justify-end">
+                    {{ form_widget(form.submit) }}
+                </div>
+
+
+                {{ form_end(form, {'render_rest': false}) }}
             </div>
         </section>
     </div>
