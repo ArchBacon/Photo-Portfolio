@@ -1,0 +1,12 @@
+<div class="relative block w-72 h-52 mx-5">
+    <a href="#{{ tag }}">
+        <div class="w-full h-full bg-yellow-200 absolute rotate-2 shadow-darker border-4 border-white"></div>
+        <div class="w-full h-full bg-green-400 absolute -rotate-2 shadow-darker border-4 border-white"></div>
+        <div class="w-full h-full bg-red-300 absolute rotate-0 shadow-darker border-4 border-white">
+            <img class="w-full h-full" src="{{ image }}" alt="">
+        </div>
+        <div class="bg-white w-64 h-10 absolute top-1/2 -translate-y-1/2 text-right leading-10 pr-5 shadow-label uppercase font-bold text-black text-opacity-50">
+            {{ tag|replace({'-': ' '}) }}
+        </div>
+    </a>
+</div>
