@@ -38,21 +38,21 @@
             } only %}
         </section>
         <section class="masonry py-16">
-            <div class="grid">
+            <div class="grid grid-cols-mason gap-5 p-5 auto-rows-mason">
                 {% set big_array = [4, 8, 3, 5, 8, 9] %}
                 {% set count = 0 %}
                 {% set compare = 0 %}
 
                 {% for key in 0..34 %}
                     {% if key == compare %}
-                        <div class="grid-item span-2">
-                            <img src="https://picsum.photos/seed/{{ key }}/400" alt="">
+                        <div class="rounded shadow-mason col-span-2 row-span-2">
+                            <img src="https://picsum.photos/seed/{{ key }}/400" alt="" class="w-full h-full rounded">
                         </div>
                         {% set compare = compare + big_array[count] %}
                         {% set count = count + 1 %}
                     {% else %}
-                        <div class="grid-item">
-                            <img src="https://picsum.photos/seed/{{ key }}/200" alt="">
+                        <div class="rounded shadow-mason">
+                            <img src="https://picsum.photos/seed/{{ key }}/200" alt="" class="w-full h-full rounded">
                         </div>
                     {% endif %}
 
