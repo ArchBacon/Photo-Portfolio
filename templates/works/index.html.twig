@@ -3,7 +3,7 @@
 {% block title %}Hello WorksController!{% endblock %}
 
 {% block body %}
-    <div class="py-28 mx-16">
+    <div class="pt-28 mx-16">
         <section class="mb-36 w-full my-0 mx-auto max-w-3xl">
             <div class="uppercase absolute left-0 top-[12.5%] w-full text-center">
                 <span class="text-base font-bold">My photo portfolio</span>
@@ -37,13 +37,13 @@
                 'image': 'https://i.pinimg.com/originals/41/48/8a/41488a9eaf86e27f0a149d21b59faa3c.jpg'
             } only %}
         </section>
-        <section class="masonry pt-16">
+        <section class="masonry py-16">
             <div class="grid">
                 {% set big_array = [4, 8, 3, 5, 8, 9] %}
                 {% set count = 0 %}
                 {% set compare = 0 %}
 
-                {% for key in 0..36 %}
+                {% for key in 0..34 %}
                     {% if key == compare %}
                         <div class="grid-item span-2">
                             <img src="https://picsum.photos/seed/{{ key }}/400" alt="">
@@ -63,4 +63,8 @@
             </div>
         </section>
     </div>
+{% endblock %}
+
+{% block footer %}
+    {% include 'shared/footer.html.twig' %}
 {% endblock %}

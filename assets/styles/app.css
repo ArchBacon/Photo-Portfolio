@@ -10,8 +10,8 @@ body:before {
     position: fixed;
     left: 0;
     top: 0;
-    width: 100vh;
-    height: 100vh;
+    width: 95vh;
+    height: 95vh;
     background: radial-gradient(ellipse at left top, #1E293B 0%, #000000 70%);
     z-index: -100;
 }
