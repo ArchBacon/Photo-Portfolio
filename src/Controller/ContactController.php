@@ -31,18 +31,8 @@ class ContactController extends AbstractController
             return $this->redirectToRoute('app_contact');
         }
 
-        return $this->render('contact/index.html.twig', [
+        return $this->render('contact/mobile.html.twig', [
             'form' => $form->createView(),
         ]);
     }
-	
-	#[Route('/contact/mobile', name: 'app_contact_mobile')]
-	public function mobile(): Response
-	{
-		$form = $this->createForm(ContactType::class, new Message());
-		
-		return $this->render('contact/mobile.html.twig', [
-			'form' => $form->createView(),
-		]);
-	}
 }
