@@ -15,4 +15,10 @@ class HomeController extends AbstractController
     {
         return $this->render('home/index.html.twig');
     }
+
+    #[Route('/old', name: 'app_home_old')]
+    public function old(): Response
+    {
+        return $this->render('home/old.html.twig');
+    }
 }
