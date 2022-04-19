@@ -3,23 +3,21 @@
 {% block title %}Contact{% endblock %}
 
 {% block body %}
-    <section class="mt-12 mb-8 md:mb-24">
-        <div class="uppercase text-center font-bold">
-            <h2>How to find me</h2>
-            <hr>
-            <h1 class="text-4xl">Contact Me</h1>
-        </div>
-    </section>
+    <div class="uppercase text-center font-bold mt-12 mb-8 md:mb-24">
+        <h2>How to find me</h2>
+        <hr>
+        <h1 class="text-4xl">Contact Me</h1>
+    </div>
 
     <div class="md:flex md:flex-row h-full max-w-5xl m-auto">
-        <section class="my-8 px-4 md:w-1/2">
+        <div class="mt-8 mb-16 px-4 md:w-1/2">
             <h3 class="hidden md:block text-3xl mb-5 w-full uppercase">
                 <span class="text-xs block">Who am i?</span>
                 <span class="text-white font-bold block">About me</span>
             </h3>
 
             <p class="text-center md:text-left">{{ lipsum(300) }}</p>
-        </section>
+        </div>
 
         <section class="my-8 px-4 md:w-1/2">
             {{ form_start(form) }}
@@ -55,17 +53,13 @@
 
     <footer class="mt-4 mb-8 px-4 flex flex-col text-center w-full
             md:absolute md:bottom-0 md:flex-row md:mb-0 md:justify-between">
-        <section class="mb-8">
-            <div class="flex flex-row justify-center">
-                <a href="#" class="hover:text-white mx-5"><i data-feather="facebook"></i></a>
-                <a href="#" class="hover:text-white mx-5"><i data-feather="twitter"></i></a>
-                <a href="#" class="hover:text-white mx-5"><i data-feather="instagram"></i></a>
-                <a href="#" class="hover:text-white mx-5"><i data-feather="youtube"></i></a>
-            </div>
-        </section>
+        <div class="flex flex-row justify-center mb-8">
+            <a href="#" class="hover:text-white mx-5"><i data-feather="facebook"></i></a>
+            <a href="#" class="hover:text-white mx-5"><i data-feather="twitter"></i></a>
+            <a href="#" class="hover:text-white mx-5"><i data-feather="instagram"></i></a>
+            <a href="#" class="hover:text-white mx-5"><i data-feather="youtube"></i></a>
+        </div>
 
-        <section>
-            <p class="uppercase font-bold">Copyright &copy; 2020. <span class="inline-block">All Rights Reserved.</span></p>
-        </section>
+        <p class="uppercase font-bold">Copyright &copy; 2020. <span class="inline-block">All Rights Reserved.</span></p>
     </footer>
 {% endblock %}
