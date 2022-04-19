@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+    <section class="mt-12 mb-8">
+        <div class="uppercase text-center font-bold">
+            <h2>How to find me</h2>
+            <hr>
+            <h1 class="text-4xl">Contact Me</h1>
+        </div>
+    </section>
+
+    <section class="my-8 px-4">
+        <p class="text-center
+        md:text-green-600
+        lg:text-blue-600
+        xl:text-pink-600
+        2xl:text-yellow-600
+    ">{{ lipsum(300) }}</p>
+    </section>
+
+    <section class="my-8 px-4">
+        {{ form_start(form) }}
+        {{ form_widget(form._token) }}
+
+        <div>
+            {{ form_errors(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_help(form.name) }}
+        </div>
+
+        <div>
+            {{ form_errors(form.email) }}
+            {{ form_widget(form.email) }}
+            {{ form_help(form.email) }}
+        </div>
+
+        <div>
+            {{ form_errors(form.content) }}
+            {{ form_widget(form.content) }}
+            {{ form_help(form.content) }}
+        </div>
+
+        <div class="flex justify-center">
+            {{ form_widget(form.submit) }}
+        </div>
+
+        {{ form_end(form, {render_rest: false}) }}
+    </section>
+
+    <footer class="mt-4 mb-8 px-4 flex flex-col text-center w-full
+            md:absolute md:bottom-0 md:flex-row md:mb-0 md:justify-between">
+        <section class="mb-8">
+            <div class="flex flex-row justify-center">
+                <a href="#" class="hover:text-white mx-5"><i data-feather="facebook"></i></a>
+                <a href="#" class="hover:text-white mx-5"><i data-feather="twitter"></i></a>
+                <a href="#" class="hover:text-white mx-5"><i data-feather="instagram"></i></a>
+                <a href="#" class="hover:text-white mx-5"><i data-feather="youtube"></i></a>
+            </div>
+        </section>
+
+        <section>
+            <p class="uppercase font-bold">Copyright &copy; 2020. <span class="inline-block">All Rights Reserved.</span></p>
+        </section>
+    </footer>
+{% endblock %}

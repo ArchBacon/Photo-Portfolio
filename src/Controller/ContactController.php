@@ -35,4 +35,14 @@ class ContactController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+	
+	#[Route('/contact/mobile', name: 'app_contact_mobile')]
+	public function mobile(): Response
+	{
+		$form = $this->createForm(ContactType::class, new Message());
+		
+		return $this->render('contact/mobile.html.twig', [
+			'form' => $form->createView(),
+		]);
+	}
 }
