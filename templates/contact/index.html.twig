@@ -18,10 +18,7 @@
                 <span class="text-white font-bold block">About me</span>
             </h3>
 
-            <p class="text-center
-                md:text-green-600 lg:text-blue-600
-                md:text-left
-            ">{{ lipsum(300) }}</p>
+            <p class="text-center md:text-left">{{ lipsum(300) }}</p>
         </section>
 
         <section class="my-8 px-4 md:w-1/2">
@@ -48,7 +45,7 @@
                 {{ form_help(form.content) }}
             </div>
 
-            <div class="flex justify-center md:justify-end">
+            <div class="flex justify-center lg:justify-end">
                 {{ form_widget(form.submit) }}
             </div>
 
