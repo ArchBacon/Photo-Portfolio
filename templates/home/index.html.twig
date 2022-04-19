@@ -1,21 +1,84 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Website | Home{% endblock %}
+{% block title %}Hello WorksController!{% endblock %}
 
 {% block body %}
-    <div class="uppercase absolute left-0 top-1/4 w-3/4 -z-10">
-        <a href="{{ path('app_works') }}" class="group">
-            <span class="text-base font-bold duration-700 ease-in-out ml-56 group-hover:ml-64">My Photo Portfolio</span>
-            <hr>
-            <span class="text-4xl font-bold duration-700 ease-in-out ml-80 group-hover:ml-72">Explore Works</span>
-        </a>
-    </div>
+    <div class="pt-28 mx-16">
+        <section class="mb-36 w-full my-0 mx-auto max-w-3xl">
+            <div class="uppercase absolute left-0 top-[12.5%] w-full text-center">
+                <span class="text-base font-bold">My photo portfolio</span>
+                <hr>
+                <span class="text-4xl font-bold">Explore works</span>
+            </div>
+        </section>
+        <section class="flex flex-row w-full h-52 justify-center">
+            {% include 'shared/album.html.twig' with {
+                'tag': 'animals',
+                'image': 'https://www.iata.org/contentassets/d7c512eb9a704ba2a8056e3186a31921/cargo_live_animals_parrot.jpg'
+            } only %}
 
-    <div class="uppercase absolute right-0 top-2/3 w-3/4 text-right -z-10">
-        <a href="{{ path('app_contact') }}" class="group">
-            <span class="text-base font-bold duration-700 ease-in-out mr-56 group-hover:mr-64">How to find me</span>
-            <hr>
-            <span class="text-4xl font-bold duration-700 ease-in-out mr-80 group-hover:mr-72">Contact Me</span>
-        </a>
+            {% include 'shared/album.html.twig' with {
+                'tag': 'people',
+                'image': 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_517194189_373099.jpg'
+            } only %}
+
+            {% include 'shared/album.html.twig' with {
+                'tag': 'fantasy',
+                'image': 'https://image.shutterstock.com/image-photo/butterfly-grass-on-meadow-night-260nw-1111729556.jpg'
+            } only %}
+
+            {% include 'shared/album.html.twig' with {
+                'tag': 'elves',
+                'image': 'https://static.wikia.nocookie.net/thecreatureworldcc/images/d/d1/Elf.jpg'
+            } only %}
+
+            {% include 'shared/album.html.twig' with {
+                'tag': 'sky-whale',
+                'image': 'https://i.pinimg.com/originals/41/48/8a/41488a9eaf86e27f0a149d21b59faa3c.jpg'
+            } only %}
+        </section>
+        <section class="masonry py-16">
+            <div class="grid grid-cols-mason gap-5 p-5 auto-rows-mason">
+                {% set big_array = [4, 8, 3, 5, 8, 9] %}
+                {% set count = 0 %}
+                {% set compare = 0 %}
+
+                {% for key in 0..34 %}
+                    {% if key == compare %}
+                        <div class="rounded shadow-mason col-span-2 row-span-2">
+                            <img src="https://picsum.photos/seed/{{ key }}/400" alt="" class="w-full h-full rounded">
+                        </div>
+                        {% set compare = compare + big_array[count] %}
+                        {% set count = count + 1 %}
+                    {% else %}
+                        <div class="rounded shadow-mason">
+                            <img src="https://picsum.photos/seed/{{ key }}/200" alt="" class="w-full h-full rounded">
+                        </div>
+                    {% endif %}
+
+                    {% if count > 5 %}
+                        {% set count = 0 %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+
+        <div class="uppercase fixed left-0 bottom-[8%] w-3/12 text-right bg-black bg-opacity-80 rounded-2xl group hover:bg-opacity-100">
+            <a href="{{ path('app_home') }}">
+                <span class="text-base font-bold duration-700 ease-in-out mr-40 delay-75 group-hover:mr-36">Return</span>
+                <hr>
+                <span class="text-4xl font-bold duration-700 ease-in-out mr-16 delay-75 group-hover:mr-24">Back</span>
+            </a>
+        </div>
+
+        <div class="uppercase fixed right-0 bottom-[8%] w-1/12 bg-black bg-opacity-80 rounded-2xl group hover:bg-opacity-100 py-3">
+            <a href="#">
+                <span class="text-4xl font-bold duration-700 ease-in-out ml-8 delay-75 group-hover:ml-12">Up</span>
+            </a>
+        </div>
     </div>
+{% endblock %}
+
+{% block footer %}
+    {% include 'shared/footer.html.twig' %}
 {% endblock %}
