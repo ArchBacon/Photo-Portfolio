@@ -9,8 +9,9 @@
         <h1 class="text-4xl">Contact Me</h1>
     </div>
 
-    <div class="md:flex md:flex-row h-full max-w-5xl m-auto">
-        <div class="mt-8 mb-16 px-4 md:w-1/2">
+    <main class="max-w-5xl m-auto px-4 my-8
+            md:flex md:flex-row">
+        <div class="mb-16 md:w-1/2">
             <h3 class="hidden md:block text-3xl mb-5 w-full uppercase">
                 <span class="text-xs block">Who am i?</span>
                 <span class="text-white font-bold block">About me</span>
@@ -19,7 +20,7 @@
             <p class="text-center md:text-left">{{ lipsum(300) }}</p>
         </div>
 
-        <section class="my-8 px-4 md:w-1/2">
+        <section class="mt-8 md:w-1/2">
             {{ form_start(form) }}
             {{ form_widget(form._token) }}
 
@@ -49,7 +50,7 @@
 
             {{ form_end(form, {render_rest: false}) }}
         </section>
-    </div>
+    </main>
 
     <footer class="mt-4 mb-8 px-4 flex flex-col text-center w-full
             md:absolute md:bottom-0 md:flex-row md:mb-0 md:justify-between">
