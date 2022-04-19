@@ -3,7 +3,7 @@
 {% block title %}Contact{% endblock %}
 
 {% block body %}
-    <section class="mt-12 mb-8">
+    <section class="mt-12 mb-8 md:mb-24">
         <div class="uppercase text-center font-bold">
             <h2>How to find me</h2>
             <hr>
@@ -11,43 +11,50 @@
         </div>
     </section>
 
-    <section class="my-8 px-4">
-        <p class="text-center
-        md:text-green-600
-        lg:text-blue-600
-        xl:text-pink-600
-        2xl:text-yellow-600
-    ">{{ lipsum(300) }}</p>
-    </section>
+    <div class="md:flex md:flex-row h-full max-w-5xl m-auto">
+        <section class="my-8 px-4 md:w-1/2">
+            <h3 class="hidden md:block text-3xl mb-5 w-full uppercase">
+                <span class="text-xs block">Who am i?</span>
+                <span class="text-white font-bold block">About me</span>
+            </h3>
 
-    <section class="my-8 px-4">
-        {{ form_start(form) }}
-        {{ form_widget(form._token) }}
+            <p class="text-center
+                md:text-green-600 lg:text-blue-600
+                md:text-left
+            ">{{ lipsum(300) }}</p>
+        </section>
 
-        <div>
-            {{ form_errors(form.name) }}
-            {{ form_widget(form.name) }}
-            {{ form_help(form.name) }}
-        </div>
+        <section class="my-8 px-4 md:w-1/2">
+            {{ form_start(form) }}
+            {{ form_widget(form._token) }}
 
-        <div>
-            {{ form_errors(form.email) }}
-            {{ form_widget(form.email) }}
-            {{ form_help(form.email) }}
-        </div>
+            <div class="lg:flex lg:flex-row">
+                <div class="lg:w-full lg:mr-2.5">
+                    {{ form_errors(form.name) }}
+                    {{ form_widget(form.name) }}
+                    {{ form_help(form.name) }}
+                </div>
 
-        <div>
-            {{ form_errors(form.content) }}
-            {{ form_widget(form.content) }}
-            {{ form_help(form.content) }}
-        </div>
+                <div class="lg:w-full lg:ml-2.5">
+                    {{ form_errors(form.email) }}
+                    {{ form_widget(form.email) }}
+                    {{ form_help(form.email) }}
+                </div>
+            </div>
 
-        <div class="flex justify-center">
-            {{ form_widget(form.submit) }}
-        </div>
+            <div>
+                {{ form_errors(form.content) }}
+                {{ form_widget(form.content) }}
+                {{ form_help(form.content) }}
+            </div>
 
-        {{ form_end(form, {render_rest: false}) }}
-    </section>
+            <div class="flex justify-center md:justify-end">
+                {{ form_widget(form.submit) }}
+            </div>
+
+            {{ form_end(form, {render_rest: false}) }}
+        </section>
+    </div>
 
     <footer class="mt-4 mb-8 px-4 flex flex-col text-center w-full
             md:absolute md:bottom-0 md:flex-row md:mb-0 md:justify-between">
