@@ -15,15 +15,18 @@ let overlay = document.getElementById('overlay');
 let sidebar = document.getElementById('sidebar');
 let sidebarClose = document.getElementById('sidebar-close');
 let sidebarOpen = document.getElementById('sidebar-open');
+let body = document.getElementById('body');
 
 function showOverlay() {
     overlay.classList.replace('opacity-0', 'opacity-90');
     overlay.classList.replace('pointer-events-none', 'pointer-events-auto');
+    body.classList.replace('overflow-y-auto', 'overflow-y-hidden');
 }
 
 function hideOverlay() {
     overlay.classList.replace('opacity-90', 'opacity-0');
     overlay.classList.replace('pointer-events-auto', 'pointer-events-none');
+    body.classList.replace('overflow-y-hidden', 'overflow-y-auto');
 }
 
 function showSidebar() {
