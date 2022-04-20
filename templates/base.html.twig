@@ -24,10 +24,10 @@
     {# TODO: Move header to own file/block #}
     <header>
         <a href="#" class="absolute top-3 left-4">
-            <img src="{{ asset('image/logo.png') }}" class="h-10" alt="Logo">
+            <img src="{{ asset('image/logo.png') }}" class="h-10 md:h-28" alt="Logo">
         </a>
 
-        <a href="#" class="absolute top-5 right-4"><i data-feather="menu"></i></a>
+        <a href="#" class="absolute top-5 right-4 md:top-12 md:right-12"><i data-feather="menu" class="md:h-8 md:w-8"></i></a>
     </header>
     {% block body %}{% endblock %}
     {# TODO: Make footer response #}
