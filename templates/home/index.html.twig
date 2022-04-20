@@ -2,19 +2,36 @@
 
 {% block title %}Works{% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('works') }}
+{% endblock %}
+
 {% block body %}
-    <div class="uppercase text-center font-bold mt-12 mb-8 md:mb-24">
+    <div class="uppercase text-center font-bold mt-12 mb-8 md:mb-24 md:mt-28">
         <h2>My photo portfolio</h2>
         <hr>
         <h1 class="text-4xl">Explore Works</h1>
     </div>
 
-    <main class="max-w-5xl m-auto px-4 my-8">
-        <section>
-            Albums
+    <main class="my-8 md:mt-0">
+        <section id="tags" class="flex flex-nowrap overflow-x-auto scrollbar-none px-2">
+            <div class="flex items-center">
+                <i data-feather="chevron-left"></i>
+            </div>
+
+            {% for tag in 0..5 %}
+                <div class="flex flex-0 items-center justify-center w-80 h-52 border-2 border-amber-50 mx-4">
+                    Card
+                </div>
+            {% endfor %}
+
+            <div class="flex items-center">
+                <i data-feather="chevron-right"></i>
+            </div>
         </section>
 
-        <section>
+        <section class="px-12 mt-16">
             Masonry
         </section>
     </main>

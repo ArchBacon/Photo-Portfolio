@@ -16,6 +16,13 @@ body:before {
     z-index: -100;
 }
 
+/* Tailwind Extension */
+@layer utilities {
+    .scrollbar-none::-webkit-scrollbar {
+        display: none;
+    }
+}
+
 /* Contact Form */
 form {
     width: 100%;
