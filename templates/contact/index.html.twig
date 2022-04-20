@@ -3,11 +3,10 @@
 {% block title %}Contact{% endblock %}
 
 {% block body %}
-    <div class="uppercase text-center font-bold mt-12 mb-8 md:mb-24 md:mt-28">
-        <h2>How to find me</h2>
-        <hr>
-        <h1 class="text-4xl">Contact Me</h1>
-    </div>
+    {% include 'shared/title.html.twig' with {
+        'title': 'Contact Me',
+        'subtitle': 'How to find me',
+    } only %}
 
     <main class="max-w-5xl m-auto px-4 my-8
             md:flex md:flex-row">
@@ -51,16 +50,4 @@
             {{ form_end(form, {render_rest: false}) }}
         </section>
     </main>
-
-    <footer class="mt-4 mb-8 px-4 flex flex-col text-center w-full
-            md:absolute md:bottom-0 md:flex-row md:mb-0 md:justify-between">
-        <div class="flex flex-row justify-center mb-8">
-            <a href="#" class="hover:text-white mx-5"><i data-feather="facebook"></i></a>
-            <a href="#" class="hover:text-white mx-5"><i data-feather="twitter"></i></a>
-            <a href="#" class="hover:text-white mx-5"><i data-feather="instagram"></i></a>
-            <a href="#" class="hover:text-white mx-5"><i data-feather="youtube"></i></a>
-        </div>
-
-        <p class="uppercase font-bold">Copyright &copy; 2020. <span class="inline-block">All Rights Reserved.</span></p>
-    </footer>
 {% endblock %}

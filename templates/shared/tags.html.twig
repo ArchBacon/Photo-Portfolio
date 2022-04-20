@@ -1,0 +1,25 @@
+<section id="tags" class="flex flex-nowrap overflow-x-auto scrollbar-none px-2 h-64 items-center">
+    <div class="flex items-center">
+        <i data-feather="chevron-left"></i>
+    </div>
+
+    {% for tag in tags %}
+        <section class="flex grow-0 shrink-0 basis-auto items-center justify-center w-80 h-52 mx-4 relative max-w-full">
+            <div class="w-full h-full bg-white border-4 border-white -rotate-4 absolute shadow-md shadow-black"></div>
+            <div class="w-full h-full bg-white border-4 border-white -rotate-2 absolute shadow-md shadow-black"></div>
+            <a href="#" draggable="false" class="w-full h-full absolute active:cursor-grabbing">
+                <div class="w-full h-full bg-white border-4 border-white rotate-0 absolute shadow-md shadow-black">
+                    <img class="w-full h-full" draggable="false" src="{{ tag.url }}" alt="{{ tag.name|replace({'-': ' '}) }}">
+                </div>
+                <span class="bg-white w-11/12 h-10 absolute left-0 flex justify-end items-center pr-5 shadow-md shadow-gray-500 top-1/2 -translate-y-1/2
+                            text-black text-opacity-50 font-bold uppercase text-right">
+                        {{ tag.name|replace({'-': ' '}) }}
+                    </span>
+            </a>
+        </section>
+    {% endfor %}
+
+    <div class="flex items-center">
+        <i data-feather="chevron-right"></i>
+    </div>
+</section>

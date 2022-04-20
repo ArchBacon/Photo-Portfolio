@@ -21,7 +21,7 @@ class HomeController extends AbstractController
     public function index(): Response
     {
         $images = [];
-        for ($i = 0; $i < 230; $i++) {
+        for ($i = 0; $i < 24; $i++) {
             $images[] = sprintf('https://picsum.photos/seed/%s/400', random_int(1, 200));
         }
 

@@ -1,9 +1,7 @@
-<header class="w-full">
-    <div class="flex flex-row justify-between mx-12 my-6 text-sm">
-        <ul class="flex flex-row font-bold">
-            <li class="mr-10"><a href="{{ path('app_home') }}" class="hover:text-white">Home</a></li>
-            <li class="mr-10"><a href="{{ path('app_works') }}" class="hover:text-white">Works</a></li>
-            <li class="mr-10"><a href="{{ path('app_contact') }}" class="hover:text-white">Contact</a></li>
-        </ul>
-    </div>
+<header>
+    <a href="#" class="absolute top-3 left-4">
+        <img src="{{ asset('image/logo.png') }}" class="h-10 md:h-28" alt="Logo">
+    </a>
+
+    <a href="#" class="absolute top-5 right-4 md:top-12 md:right-12"><i data-feather="menu" class="md:h-8 md:w-8"></i></a>
 </header>

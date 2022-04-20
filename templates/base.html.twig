@@ -19,22 +19,16 @@
         <script src="{{ asset('feather.min.js') }}"></script>
     {% endblock %}
 </head>
-<body class="bg-black font-montserrat text-white text-opacity-50 flex flex-col">
-    {# TODO: Make header response #}
-    {# TODO: Move header to own file/block #}
-    <header>
-        <a href="#" class="absolute top-3 left-4">
-            <img src="{{ asset('image/logo.png') }}" class="h-10 md:h-28" alt="Logo">
-        </a>
+<body class="bg-black font-montserrat text-white text-opacity-50 flex flex-col relative min-h-screen pb-28">
+    {% block header %}
+        {% include 'shared/header.html.twig' %}
+    {% endblock %}
 
-        <a href="#" class="absolute top-5 right-4 md:top-12 md:right-12"><i data-feather="menu" class="md:h-8 md:w-8"></i></a>
-    </header>
     {% block body %}{% endblock %}
-    {# TODO: Make footer response #}
-    {# TODO: Move footer to own file/block #}
-{#    {% block footer %}#}
-{#        {% include 'shared/fixed-footer.html.twig' %}#}
-{#    {% endblock%}#}
+
+    {% block footer %}
+        {% include 'shared/footer.html.twig' %}
+    {% endblock %}
 
     <script>
         feather.replace()

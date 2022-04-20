@@ -8,61 +8,18 @@
 {% endblock %}
 
 {% block body %}
-    <div class="uppercase text-center font-bold mt-12 mb-8 md:mb-24 md:mt-28">
-        <h2>My photo portfolio</h2>
-        <hr>
-        <h1 class="text-4xl">Explore Works</h1>
-    </div>
+    {% include 'shared/title.html.twig' with {
+        'title': 'Explore Works',
+        'subtitle': 'My photo portfolio',
+    } only %}
 
     <main class="my-8 md:mt-0">
-        <section id="tags" class="flex flex-nowrap overflow-x-auto scrollbar-none px-2 h-64 items-center">
-            <div class="flex items-center">
-                <i data-feather="chevron-left"></i>
-            </div>
+        {% include 'shared/tags.html.twig' with {
+            'tags': tags
+        } only %}
 
-            {% for tag in tags %}
-                {# Album/Tag TODO: Move to own file #}
-                <section class="flex grow-0 shrink-0 basis-auto items-center justify-center w-80 h-52 mx-4 relative max-w-full">
-                    <div class="w-full h-full bg-white border-4 border-white -rotate-4 absolute shadow-md shadow-black"></div>
-                    <div class="w-full h-full bg-white border-4 border-white -rotate-2 absolute shadow-md shadow-black"></div>
-                    <a href="#" draggable="false" class="w-full h-full absolute active:cursor-grabbing">
-                        <div class="w-full h-full bg-white border-4 border-white rotate-0 absolute shadow-md shadow-black">
-                            <img class="w-full h-full" draggable="false" src="{{ tag.url }}" alt="{{ tag.name|replace({'-': ' '}) }}">
-                        </div>
-                        <span class="bg-white w-11/12 h-10 absolute left-0 flex justify-end items-center pr-5 shadow-md shadow-gray-500 top-1/2 -translate-y-1/2
-                            text-black text-opacity-50 font-bold uppercase text-right">
-                        {{ tag.name|replace({'-': ' '}) }}
-                    </span>
-                    </a>
-                </section>
-            {% endfor %}
-
-            <div class="flex items-center">
-                <i data-feather="chevron-right"></i>
-            </div>
-        </section>
-
-        <section class="px-5 mt-16 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8">
-            {# TODO: Make auto loading/infinite scroll to save data #}
-            {# TODO: Add back to top button #}
-            {# TODO: Add restore scroll position button #}
-            {% for image in images %}
-                <div class="rounded shadow-md shadow-black {% if image.large %}md:col-span-2 md:row-span-2{% endif %}">
-                    <img src="{{ image.url }}" class="w-full h-full rounded" alt="">
-                </div>
-            {% endfor %}
-        </section>
+        {% include 'shared/masonry.html.twig' with {
+            'images': images
+        } only %}
     </main>
-
-    <footer class="mt-4 mb-8 px-4 flex flex-col text-center w-full
-            md:flex-row md:mb-0 md:justify-between">
-        <div class="flex flex-row justify-center mb-8">
-            <a href="#" class="hover:text-white mx-5"><i data-feather="facebook"></i></a>
-            <a href="#" class="hover:text-white mx-5"><i data-feather="twitter"></i></a>
-            <a href="#" class="hover:text-white mx-5"><i data-feather="instagram"></i></a>
-            <a href="#" class="hover:text-white mx-5"><i data-feather="youtube"></i></a>
-        </div>
-
-        <p class="uppercase font-bold">Copyright &copy; 2020. <span class="inline-block">All Rights Reserved.</span></p>
-    </footer>
 {% endblock %}
