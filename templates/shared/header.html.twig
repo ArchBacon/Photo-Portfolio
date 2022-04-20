@@ -3,5 +3,17 @@
         <img src="{{ asset('image/logo.png') }}" class="h-10 md:h-28" alt="Logo">
     </a>
 
-    <a href="#" class="absolute top-5 right-4 md:top-12 md:right-12"><i data-feather="menu" class="md:h-8 md:w-8"></i></a>
+    <a href="javascript:void(0)" id="sidebar-open" class="absolute top-5 right-4 md:top-12 md:right-12"><i data-feather="menu" class="md:h-8 md:w-8"></i></a>
+
+    <div id="sidebar" class="w-96 z-20 h-screen fixed ease-in-out duration-500 bg-zinc-900 top-0 -right-96">
+        <a href="javascript:void(0)" id="sidebar-close" class="absolute top-0 -left-40 uppercase pointer-events-none opacity-0 -rotate-90 origin-bottom-right
+            ease-in-out duration-500 hover:text-white"
+        >x close sidebar</a>
+        <nav class="p-10">
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
 </header>

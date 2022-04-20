@@ -19,7 +19,9 @@
         <script src="{{ asset('feather.min.js') }}"></script>
     {% endblock %}
 </head>
-<body class="bg-black font-montserrat text-white text-opacity-50 flex flex-col relative min-h-screen pb-28">
+<body class="bg-black font-montserrat text-white text-opacity-50 flex flex-col relative min-h-screen pb-28 overflow-x-hidden">
+    <div id="overlay" class="fixed z-10 bg-black opacity-0 h-screen w-screen pointer-events-none transition-opacity ease-out duration-500 cursor-pointer"></div>
+
     {% block header %}
         {% include 'shared/header.html.twig' %}
     {% endblock %}
