@@ -21,12 +21,12 @@ class HomeController extends AbstractController
     public function index(): Response
     {
         $images = [];
-        for ($i = 0; $i < 12; $i++) {
+        for ($i = 0; $i < 230; $i++) {
             $images[] = sprintf('https://picsum.photos/seed/%s/400', random_int(1, 200));
         }
 
         $tags = [];
-        for ($i = 0; $i < 6; $i++) {
+        for ($i = 0; $i < 8; $i++) {
             $tags[] = sprintf('https://picsum.photos/seed/%s/400', random_int(1, 200));
         }
 
@@ -34,12 +34,6 @@ class HomeController extends AbstractController
             'images' => self::generateImages($images),
             'tags' => self::generateTags($tags),
         ]);
-    }
-
-    #[Route('/old', name: 'app_home_old')]
-    public function reference(): Response
-    {
-        return $this->render('home/old.html.twig');
     }
 
     private static function generateTags(array $inTags): array
