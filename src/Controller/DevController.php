@@ -10,6 +10,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DevController extends AbstractController
 {
+    public function __construct(string $environment)
+    {
+        if ($environment !== 'dev') {
+            throw $this->createNotFoundException();
+        }
+    }
+
     #[Route('/dev', name: 'app_dev')]
     public function index(): Response
     {

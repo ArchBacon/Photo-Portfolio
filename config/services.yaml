@@ -22,5 +22,5 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-    App\Controller\DemoController:
-        arguments: ['@service_container']
+    App\Controller\DevController:
+        arguments: ['%kernel.environment%']
