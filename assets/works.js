@@ -1,43 +1,40 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const ele = document.getElementById('tags');
-    ele.style.cursor = 'grab';
+const overlay = document.getElementById('overlay');
+const sidebar = document.getElementById('sidebar');
+const sidebarClose = document.getElementById('sidebar-close');
+const sidebarOpen = document.getElementById('sidebar-open');
+const body = document.getElementById('body');
 
-    let pos = {top: 0, left: 0, x: 0, y: 0};
+function showOverlay() {
+    overlay.classList.replace('opacity-0', 'opacity-90');
+    overlay.classList.replace('pointer-events-none', 'pointer-events-auto');
+    body.classList.replace('overflow-y-auto', 'overflow-y-hidden');
+}
 
-    const mouseDownHandler = function (e) {
-        ele.style.cursor = 'grabbing';
-        ele.style.userSelect = 'none';
+function hideOverlay() {
+    overlay.classList.replace('opacity-90', 'opacity-0');
+    overlay.classList.replace('pointer-events-auto', 'pointer-events-none');
+    body.classList.replace('overflow-y-hidden', 'overflow-y-auto');
+}
 
-        pos = {
-            left: ele.scrollLeft,
-            top: ele.scrollTop,
-            // Get the current mouse position
-            x: e.clientX,
-            y: e.clientY,
-        };
+function showSidebar() {
+    sidebar.classList.replace('-right-5/6', 'right-0');
+    sidebar.classList.replace('md:-right-96', 'md:right-0');
+    sidebarClose.classList.replace('pointer-events-none', 'pointer-events-auto');
+    sidebarClose.classList.replace('opacity-0', 'opacity-100');
+}
 
-        document.addEventListener('mousemove', mouseMoveHandler);
-        document.addEventListener('mouseup', mouseUpHandler);
-    };
+function hideSidebar() {
+    sidebar.classList.replace('right-0', '-right-5/6');
+    sidebar.classList.replace('md:right-0', 'md:-right-96');
+    sidebarClose.classList.replace('pointer-events-auto', 'pointer-events-none');
+    sidebarClose.classList.replace('opacity-100', 'opacity-0');
+}
 
-    const mouseMoveHandler = function (e) {
-        // How far the mouse has been moved
-        const dx = e.clientX - pos.x;
-        const dy = e.clientY - pos.y;
+overlay.addEventListener("click", hideOverlay);
+overlay.addEventListener("click", hideSidebar);
 
-        // Scroll the element
-        ele.scrollTop = pos.top - dy;
-        ele.scrollLeft = pos.left - dx;
-    };
+sidebarClose.addEventListener("click", hideOverlay);
+sidebarClose.addEventListener("click", hideSidebar);
 
-    const mouseUpHandler = function () {
-        ele.style.cursor = 'grab';
-        ele.style.removeProperty('user-select');
-
-        document.removeEventListener('mousemove', mouseMoveHandler);
-        document.removeEventListener('mouseup', mouseUpHandler);
-    };
-
-    // Attach the handler
-    ele.addEventListener('mousedown', mouseDownHandler);
-});
+sidebarOpen.addEventListener("click", showOverlay);
+sidebarOpen.addEventListener("click", showSidebar);
