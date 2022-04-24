@@ -28,7 +28,7 @@ form {
     width: 100%;
 }
 
-input, button, textarea {
+form input, form button, form textarea {
     font-size: 14px;
     display: inline-block;
     transition: 0.3s;
@@ -41,23 +41,23 @@ input, button, textarea {
     margin-bottom: 20px;
 }
 
-input:focus, input:active, button:focus, button:active, textarea:focus, textarea:active {
+form input:focus, form input:active, form button:focus, form button:active, form textarea:focus, form textarea:active {
     outline: #808080;
     border-color: #808080;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-input:hover, button:hover, textarea:hover {
+form input:hover, form button:hover, form textarea:hover {
     border-color: #808080;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-textarea {
+form textarea {
     resize: none;
     height: 230px;
 }
 
-button {
+form button {
     font-weight: bold;
     width: auto;
     text-transform: uppercase;
@@ -65,6 +65,6 @@ button {
     color: white;
 }
 
-button:hover {
+form button:hover {
     border-color: #FFFFFF;
 }
