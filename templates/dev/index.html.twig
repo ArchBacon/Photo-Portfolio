@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dev{% endblock %}
+
+{% block body %}
+    {% include 'shared/title.html.twig' with {
+        'title': 'Maintenance mode',
+        'subtitle': 'Development',
+    } only %}
+{% endblock %}
