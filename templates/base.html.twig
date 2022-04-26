@@ -19,7 +19,8 @@
         <script src="{{ asset('feather.min.js') }}"></script>
     {% endblock %}
 </head>
-<body id="body" class="bg-black font-montserrat text-white text-opacity-50 flex flex-col relative min-h-screen pb-28 overflow-x-hidden overflow-y-auto">
+<body id="body" class="bg-black font-montserrat text-white text-opacity-50 flex flex-col relative min-h-screen pb-28 overflow-x-hidden overflow-y-auto
+                before:fixed before:left-0 before:top-0 before:w-screen before:h-screen before:-z-10 before:content-['']">
     <div id="overlay" class="fixed z-10 bg-black opacity-0 h-screen w-screen pointer-events-none ease-out duration-500 transition-opacity cursor-pointer"></div>
     {% block header %}
         {% include 'shared/header.html.twig' %}
@@ -31,8 +32,9 @@
         {% include 'shared/footer.html.twig' %}
     {% endblock %}
 
-    <button id="up" class="fixed bottom-8 right-8 h-12 w-12 rounded flex justify-center items-center border-2 border-neutral-500 text-neutral-500 group bg-[#1E293B] mix-blend-difference">
-        <i class="group-hover:animate-bounce mix-blend-exclusion" data-feather="chevrons-up"></i>
+    <button id="up"
+            class="fixed bottom-10 right-0 h-12 w-24 shadow-md shadow-black rounded-l flex justify-start items-center border-2 border-r-0 border-[#808080] group bg-black">
+        <i class="group-hover:animate-bounce mx-4" data-feather="chevron-up"></i>
     </button>
     <script>
         feather.replace()
