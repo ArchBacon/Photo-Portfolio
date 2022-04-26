@@ -11,12 +11,6 @@ import './styles/app.css';
 // start the Stimulus application
 import './bootstrap';
 
-// Back to top button
-const up = document.getElementById('up');
-up.addEventListener("click", function () {
-    window.scrollTo({top: 0, behavior: 'smooth'});
-});
-
 // Sidebar
 const overlay = document.getElementById('overlay');
 const sidebar = document.getElementById('sidebar');
