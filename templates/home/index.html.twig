@@ -22,6 +22,14 @@
             'images': images
         } only %}
 
+        {# Restore scroll position #}
+        <button id="down" class="fixed top-32 -right-24 h-12 w-24 shadow-md shadow-black rounded-l flex justify-start items-center
+                        border-2 border-r-0 border-[#808080] group bg-black z-30 ease-out duration-500
+                        md:top-48">
+            <i class="group-hover:animate-bounce mx-4" data-feather="chevron-down"></i>
+        </button>
+
+        {# Scroll to top #}
         <button id="up" class="fixed bottom-10 -right-24 h-12 w-24 shadow-md shadow-black rounded-l flex justify-start items-center
                         border-2 border-r-0 border-[#808080] group bg-black z-30 ease-out duration-500">
             <i class="group-hover:animate-bounce mx-4" data-feather="chevron-up"></i>

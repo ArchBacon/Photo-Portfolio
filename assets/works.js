@@ -44,23 +44,51 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Back to top button
 const up = document.getElementById('up');
+// Restore scroll position
+const down = document.getElementById('down');
+let showDownButton = false;
+let lastScrollTop = 0;
+let scrolledPosition = 0;
 
 window.scrollY > window.innerHeight
     ? showBTTButton()
     : hideBTTButton();
 
 window.addEventListener("scroll", function () {
+    if (window.scrollY > scrolledPosition) {
+        scrolledPosition = window.scrollY;
+    }
+
     if (window.scrollY <= window.innerHeight) {
         hideBTTButton();
+
+        if (showDownButton) {
+            showRSPButton();
+        }
 
         return;
     }
 
+    let st = window.scrollY || document.documentElement.scrollTop;
+    if (st > lastScrollTop) {
+        showDownButton = false;
+    }
+    lastScrollTop = st <= 0 ? 0 : st;
+
+    hideRSPButton();
     showBTTButton();
 });
 
 up.addEventListener("click", function () {
+    showDownButton = true;
+    scrolledPosition = window.scrollY;
     window.scrollTo({top: 0, behavior: 'smooth'});
+});
+
+down.addEventListener("click", function () {
+    showDownButton = false;
+    window.scrollTo({top: scrolledPosition, behavior: 'smooth'});
+    scrolledPosition = 0;
 });
 
 function showBTTButton() {
@@ -69,4 +97,12 @@ function showBTTButton() {
 
 function hideBTTButton() {
     up.classList.replace('right-0', '-right-24');
+}
+
+function showRSPButton() {
+    down.classList.replace('-right-24', 'right-0');
+}
+
+function hideRSPButton() {
+    down.classList.replace('right-0', '-right-24');
 }
