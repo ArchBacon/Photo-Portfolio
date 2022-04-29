@@ -9,11 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
         element.style.userSelect = 'none';
 
         pos = {
-            left: element.scrollLeft,
-            top: element.scrollTop,
-            // Get the current mouse position
-            x: e.clientX,
-            y: e.clientY,
+            left: element.scrollLeft, top: element.scrollTop, // Get the current mouse position
+            x: e.clientX, y: e.clientY,
         };
 
         document.addEventListener('mousemove', mouseMoveHandler);
@@ -50,9 +47,7 @@ let showDownButton = false;
 let lastScrollTop = 0;
 let scrolledPosition = 0;
 
-window.scrollY > window.innerHeight
-    ? showBTTButton()
-    : hideBTTButton();
+window.scrollY > window.innerHeight ? showBTTButton() : hideBTTButton();
 
 window.addEventListener("scroll", function () {
     if (window.scrollY > scrolledPosition) {
