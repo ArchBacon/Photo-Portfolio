@@ -19,7 +19,7 @@
         } only %}
 
         <section class="px-5 mt-16 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8">
-            {# TODO: Make auto loading/infinite scroll to save data #}
+            {# TODO: Implement lazy loaded images #}
             {% for image in images %}
                 <div class="rounded shadow-md shadow-black {% if image.large %}md:col-span-2 md:row-span-2{% endif %}">
                     <img src="{{ image.url }}" class="w-full h-full rounded" alt="">
