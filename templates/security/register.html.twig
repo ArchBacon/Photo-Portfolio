@@ -3,13 +3,39 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    {% include 'shared/title.html.twig' with {
+        'title': 'Register',
+        'subtitle': 'Create an account'
+    } only %}
 
-    {{ form_start(registrationForm) }}
-    {{ form_row(registrationForm.name) }}
-    {{ form_row(registrationForm.email) }}
-    {{ form_row(registrationForm.password) }}
-    {{ form_row(registrationForm.submit) }}
+    <main class="max-w-md m-auto px-4 my-8 w-full">
+        <section class="mt-8">
+            {{ form_start(form) }}
+            {{ form_widget(form._token) }}
 
-    {{ form_end(registrationForm) }}
+            <div>
+                {{ form_errors(form.name) }}
+                {{ form_widget(form.name) }}
+                {{ form_help(form.name) }}
+            </div>
+
+            <div>
+                {{ form_errors(form.email) }}
+                {{ form_widget(form.email) }}
+                {{ form_help(form.email) }}
+            </div>
+
+            <div>
+                {{ form_errors(form.password) }}
+                {{ form_widget(form.password) }}
+                {{ form_help(form.password) }}
+            </div>
+
+            <div class="flex justify-center lg:justify-end">
+                {{ form_widget(form.submit) }}
+            </div>
+
+            {{ form_end(form, {render_rest: false}) }}
+        </section>
+    </main>
 {% endblock %}

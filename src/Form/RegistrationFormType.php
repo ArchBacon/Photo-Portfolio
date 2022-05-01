@@ -22,12 +22,13 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'required' => true,
+                'attr' => ['placeholder' => 'Name'],
                 'constraints' => [
                     new NotBlank(['message' => 'Please enter a name.']),
                 ]
             ])
             ->add('email', EmailType::class, [
+                'attr' => ['placeholder' => 'Email'],
                 'constraints' => [
                     new NotBlank(['message' => 'Please enter a valid email address.']),
                 ]
@@ -44,8 +45,8 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
                 'invalid_message' => 'The password fields must match.',
-                'first_options' => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
+                'first_options' => ['label' => false, 'attr' => ['placeholder' => 'Password']],
+                'second_options' => ['label' => false, 'attr' => ['placeholder' => 'Repeat Password']],
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Register',
