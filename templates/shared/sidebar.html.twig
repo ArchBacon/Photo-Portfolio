@@ -9,7 +9,7 @@
             <img src="{{ asset('avatar/avatar.png') }}" alt="avatar" class="w-36 h-36 rounded-full bg-[#a0a0a0]">
             <h3 class="absolute right-5 w-56 md:w-72 text-3xl mb-5 uppercase flex flex-col text-right mix-blend-difference">
                 <span class="text-sm">Lorem Ipsum</span>
-                <span class="text-white font-bold">Lorem Ipsilus</span>
+                <span class="text-white font-bold">{{ app.user.name }}</span>
             </h3>
         </div>
     </section>
@@ -18,9 +18,19 @@
             <span class="w-full">See my works</span>
             <span class="pl-4"><i data-feather="chevron-right"></i></span>
         </a>
+
         <a href="{{ path('app_contact') }}" class="flex items-center h-12 hover:bg-zinc-800 px-4 rounded-lg">
             <span class="w-full">Get in touch</span>
             <span class="pl-4"><i data-feather="chevron-right"></i></span>
         </a>
+
+        {% if app.user %}
+            <hr class="border-neutral-500">
+
+            <a href="{{ path('app_logout') }}" class="flex items-center h-12 hover:bg-zinc-800 px-4 rounded-lg">
+                <span class="w-full">Logout</span>
+                <span class="pl-4"><i data-feather="chevron-right"></i></span>
+            </a>
+        {% endif %}
     </nav>
 </aside>
