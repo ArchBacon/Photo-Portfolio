@@ -1,3 +1,5 @@
+{% import _self as sidebar %}
+
 <aside id="sidebar" class="w-5/6 h-full fixed top-0 -right-5/6 z-20 bg-zinc-900 max-w-sm ease-in-out duration-500 z-50 p-5 md:-right-96 ">
     <a href="javascript:void(0)" id="sidebar-close"
        class="absolute w-max block uppercase origin-bottom-right top-0 -left-40 -rotate-90 text-right ease-in-out duration-500 opacity-0 pointer-events-none hover:text-white">
@@ -13,6 +15,7 @@
             </h3>
         </div>
     </section>
+
     <nav class="flex flex-col gap-2 text-right">
         <a href="{{ path('app_home') }}" class="flex items-center h-12 hover:bg-zinc-800 px-4 rounded-lg">
             <span class="w-full">See my works</span>
@@ -27,15 +30,16 @@
         {% if app.user %}
             <hr class="border-neutral-500">
 
-            <a href="{{ path('app_admin') }}" class="flex items-center h-12 hover:bg-zinc-800 px-4 rounded-lg">
-                <span class="w-full">Dashboard</span>
-                <span class="pl-4"><i data-feather="chevron-right"></i></span>
-            </a>
-
-            <a href="{{ path('app_logout') }}" class="flex items-center h-12 hover:bg-zinc-800 px-4 rounded-lg">
-                <span class="w-full">Logout</span>
-                <span class="pl-4"><i data-feather="chevron-right"></i></span>
-            </a>
+            {{ sidebar.route('Dashboard', path('app_admin')) }}
+            {{ sidebar.route('Upload image', '#') }}
+            {{ sidebar.route('Logout', path('app_logout')) }}
         {% endif %}
     </nav>
 </aside>
+
+{% macro route(name, route) %}
+    <a href="{{ route }}" class="flex items-center h-12 hover:bg-zinc-800 px-4 rounded-lg">
+        <span class="w-full">{{ name }}</span>
+        <span class="pl-4"><i data-feather="chevron-right"></i></span>
+    </a>
+{% endmacro %}
