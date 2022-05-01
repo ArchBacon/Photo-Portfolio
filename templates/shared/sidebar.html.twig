@@ -27,6 +27,11 @@
         {% if app.user %}
             <hr class="border-neutral-500">
 
+            <a href="{{ path('app_admin') }}" class="flex items-center h-12 hover:bg-zinc-800 px-4 rounded-lg">
+                <span class="w-full">Dashboard</span>
+                <span class="pl-4"><i data-feather="chevron-right"></i></span>
+            </a>
+
             <a href="{{ path('app_logout') }}" class="flex items-center h-12 hover:bg-zinc-800 px-4 rounded-lg">
                 <span class="w-full">Logout</span>
                 <span class="pl-4"><i data-feather="chevron-right"></i></span>
