@@ -18,7 +18,7 @@ class SettingsController extends BaseController
     {
         $settings = $entityManager
             ->getRepository(Settings::class)
-            ->find(1);
+            ->findAll()[0];
         $form = $this->createForm(SettingsType::class, $settings);
 
         $form->handleRequest($request);

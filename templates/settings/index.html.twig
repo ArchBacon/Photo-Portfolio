@@ -9,7 +9,7 @@
     } only %}
 
     <main class="m-8 md:mt-0">
-        <section class="w-2/3">
+        <div class="w-2/3">
             {{ form_start(form) }}
             {{ form_widget(form._token) }}
 
@@ -34,16 +34,21 @@
                 </section>
             {% endfor %}
 
+            <hr class="border-neutral-500">
+
+            {{ form_label(form.appName) }}
+            {{ form_widget(form.appName) }}
+            {{ form_help(form.appName) }}
+
             <div>
                 {{ form_widget(form.submit) }}
             </div>
 
             {{ form_end(form, {render_rest: false}) }}
-        </section>
+        </div>
         <hr class="border-neutral-500">
 
         <ul class="list-disc list-inside">
-            <li>Socials</li>
             <li>Copyright (?)</li>
             <li>Profile</li>
             <ul class="list-disc list-inside pl-5">

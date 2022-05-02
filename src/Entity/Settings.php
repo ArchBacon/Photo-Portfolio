@@ -21,6 +21,9 @@ class Settings
     #[ORM\OneToMany(mappedBy: 'settings', targetEntity: Social::class)]
     private Collection $socials;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $appName;
+
     #[Pure]
     public function __construct()
     {
@@ -58,6 +61,18 @@ class Settings
                 $social->setSettings(null);
             }
         }
+
+        return $this;
+    }
+
+    public function appName(): string
+    {
+        return $this->appName;
+    }
+
+    public function setAppName(string $appName): self
+    {
+        $this->appName = $appName;
 
         return $this;
     }

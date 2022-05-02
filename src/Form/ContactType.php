@@ -31,7 +31,7 @@ class ContactType extends AbstractType
                     new NotBlank(['message' => 'Please enter a valid email address.']),
                 ],
             ])
-            ->add('content', TextareaType::class, [
+            ->add('contents', TextareaType::class, [
                 'attr' => ['placeholder' => 'Message'],
                 'constraints' => [
                     new NotBlank(['message' => 'Please enter a message']),

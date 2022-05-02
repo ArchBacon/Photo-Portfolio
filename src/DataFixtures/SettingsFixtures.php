@@ -14,7 +14,10 @@ class SettingsFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $settings = new Settings();
+        $settings = (new Settings())
+            ->setAppName('site.name')
+        ;
+
         $manager->persist($settings);
         $manager->flush();
 

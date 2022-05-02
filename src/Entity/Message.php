@@ -23,7 +23,7 @@ class Message
     private string $email;
 
     #[ORM\Column(type: 'text')]
-    private string $content;
+    private string $contents;
 
     #[ORM\Column(type: 'datetime_immutable')]
     private DateTimeImmutable $createdAt;
@@ -33,12 +33,12 @@ class Message
         $this->createdAt = new DateTimeImmutable();
     }
 
-    public function getId(): ?int
+    public function id(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): string
+    public function name(): string
     {
         return $this->name;
     }
@@ -50,7 +50,7 @@ class Message
         return $this;
     }
 
-    public function getEmail(): string
+    public function email(): string
     {
         return $this->email;
     }
@@ -62,14 +62,14 @@ class Message
         return $this;
     }
 
-    public function getContent(): string
+    public function contents(): string
     {
-        return $this->content;
+        return $this->contents;
     }
 
-    public function setContent(string $content): self
+    public function setContents(string $content): self
     {
-        $this->content = $content;
+        $this->contents = $content;
 
         return $this;
     }
