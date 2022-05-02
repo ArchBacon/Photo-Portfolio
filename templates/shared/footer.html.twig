@@ -3,7 +3,7 @@
 
     <div class="flex flex-row justify-center mb-8">
         {% for social in socials %}
-            <a href="{{ social.url|default('#') }}" class="hover:text-white mx-5 h-min" title="{{ social.name }}"><i data-feather="{{ social.icon }}"></i></a>
+            <a href="{{ social.url|default('#') }}" target="_blank" class="hover:text-white mx-5 h-min" title="{{ social.name }}"><i data-feather="{{ social.icon }}"></i></a>
         {% endfor %}
     </div>
 
