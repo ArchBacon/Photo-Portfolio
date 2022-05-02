@@ -24,6 +24,9 @@ class Settings
     #[ORM\Column(type: 'string', length: 255)]
     private string $appName;
 
+    #[ORM\Column(type: 'boolean')]
+    private bool $displayAlbums = false;
+
     #[Pure]
     public function __construct()
     {
@@ -73,6 +76,18 @@ class Settings
     public function setAppName(string $appName): self
     {
         $this->appName = $appName;
+
+        return $this;
+    }
+
+    public function isDisplayAlbums(): bool
+    {
+        return $this->displayAlbums;
+    }
+
+    public function setDisplayAlbums(bool $displayAlbums): self
+    {
+        $this->displayAlbums = $displayAlbums;
 
         return $this;
     }

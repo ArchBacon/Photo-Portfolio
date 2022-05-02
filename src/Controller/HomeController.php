@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Exception;
 use Faker;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,25 +11,17 @@ use function count;
 
 class HomeController extends BaseController
 {
-    /**
-     * @throws Exception
-     */
+    /** @noinspection PhpClosureCanBeConvertedToShortArrowFunctionInspection */
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
-        $images = [];
-        for ($i = 0; $i < 48; $i++) {
-            $images[] = sprintf('https://picsum.photos/seed/%s/400', random_int(1, 200));
-        }
-
-        $tags = [];
-        for ($i = 0; $i < 8; $i++) {
-            $tags[] = sprintf('https://picsum.photos/seed/%s/400', random_int(1, 200));
-        }
-
         return $this->render('home/index.html.twig', [
-            'images' => self::generateImages($images),
-            'tags' => self::generateTags($tags),
+            'images' => self::generateImages(array_map(static function (int $index): string {
+                return sprintf('https://picsum.photos/seed/%s/400', $index);
+            }, range(1, 48))),
+            'tags' => self::generateTags(array_map(static function (int $index): string {
+                return sprintf('https://picsum.photos/seed/%s/400', $index);
+            }, range(49, 54))),
         ]);
     }
 
