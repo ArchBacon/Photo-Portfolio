@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Settings{% endblock %}
+
+{% block body %}
+    {% include 'shared/title.html.twig' with {
+        'title': 'Settings',
+        'subtitle': 'Configure your preferences',
+    } only %}
+
+    <main class="m-8 md:mt-0">
+        <section class="w-2/3">
+            {{ form_start(form) }}
+            {{ form_widget(form._token) }}
+
+            {% for social in form.socials %}
+                <section class="flex flex-row items-end gap-4">
+                    <div class="w-2/6">
+                        {{ form_label(social.name, social.name.parent.vars.value.icon|capitalize|replace({'-': ' '})) }}
+                        {{ form_widget(social.name) }}
+                        {{ form_help(social.name) }}
+                    </div>
+                    <div class="w-4/6">
+                        {{ form_widget(social.url) }}
+                        {{ form_help(social.url) }}
+                    </div>
+                    <div class="self-center w-1/12">
+                        <label class="checkbox">
+                            {{ form_widget(social.active) }}
+                            <span></span>
+                        </label>
+                        {{ form_help(social.active) }}
+                    </div>
+                </section>
+            {% endfor %}
+
+            <div>
+                {{ form_widget(form.submit) }}
+            </div>
+
+            {{ form_end(form, {render_rest: false}) }}
+        </section>
+        <hr class="border-neutral-500">
+
+        <ul class="list-disc list-inside">
+            <li>Socials</li>
+            <li>Copyright (?)</li>
+            <li>Profile</li>
+            <ul class="list-disc list-inside pl-5">
+                <li>name</li>
+                <li>occupation</li>
+                <li>about me</li>
+                <li>avatar</li>
+            </ul>
+            <li>albums on/off</li>
+            <li>restore scroll position button on/off</li>
+            <li>site name</li>
+            <li>logo</li>
+        </ul>
+    </main>
+{% endblock %}
