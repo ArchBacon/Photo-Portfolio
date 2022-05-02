@@ -3,9 +3,11 @@
 
     <div class="flex flex-row justify-center mb-8">
         {% for social in socials %}
-            <a href="{{ social.url|default('#') }}" target="_blank" class="hover:text-white mx-5 h-min" title="{{ social.name }}"><i data-feather="{{ social.icon }}"></i></a>
+            <a href="{{ social.url|default('#') }}" target="_blank" class="hover:text-white mx-5 h-min" title="{{ social.name }}">
+                <i data-feather="{{ social.icon }}"></i>
+            </a>
         {% endfor %}
     </div>
 
-    <p class="uppercase font-bold">Copyright &copy; 2020. <span class="inline-block">All Rights Reserved.</span></p>
+    <p class="uppercase font-bold mr-5">&copy;2022 ArchBacon</p>
 </footer>
