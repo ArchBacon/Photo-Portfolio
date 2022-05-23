@@ -17,12 +17,12 @@
     </section>
 
     <nav class="flex flex-col gap-2 text-right">
-        <a href="{{ path('app_home') }}" class="flex items-center h-12 hover:bg-zinc-800 px-4 rounded-lg">
+        <a href="{{ path('home') }}" class="flex items-center h-12 hover:bg-zinc-800 px-4 rounded-lg">
             <span class="w-full">See my works</span>
             <span class="pl-4"><i data-feather="chevron-right"></i></span>
         </a>
 
-        <a href="{{ path('app_contact') }}" class="flex items-center h-12 hover:bg-zinc-800 px-4 rounded-lg">
+        <a href="{{ path('contact') }}" class="flex items-center h-12 hover:bg-zinc-800 px-4 rounded-lg">
             <span class="w-full">Get in touch</span>
             <span class="pl-4"><i data-feather="chevron-right"></i></span>
         </a>
@@ -30,14 +30,14 @@
         {% if app.user %}
             <hr class="border-neutral-500">
 
-            {{ sidebar.route('Dashboard', path('app_admin')) }}
-            {{ sidebar.route('Upload image', '#') }}
+            {{ sidebar.route('Dashboard', path('admin_dashboard')) }}
+            {{ sidebar.route('Upload image', path('admin_upload')) }}
             {{ sidebar.route('Profile', '#') }}
-            {{ sidebar.route('Settings', path('app_settings')) }}
+            {{ sidebar.route('Settings', path('admin_settings')) }}
 
             <hr class="border-neutral-500">
 
-            {{ sidebar.route('Logout', path('app_logout')) }}
+            {{ sidebar.route('Logout', path('logout')) }}
         {% endif %}
     </nav>
 </aside>

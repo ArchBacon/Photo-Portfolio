@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 abstract class BaseController extends AbstractController
 {
+    // TODO: Maybe use this through session
     protected Settings $settings;
 
     public function __construct(

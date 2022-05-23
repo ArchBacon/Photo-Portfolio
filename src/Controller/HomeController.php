@@ -12,7 +12,7 @@ use function count;
 class HomeController extends BaseController
 {
     /** @noinspection PhpClosureCanBeConvertedToShortArrowFunctionInspection */
-    #[Route('/', name: 'app_home')]
+    #[Route('/', name: 'home')]
     public function index(): Response
     {
         return $this->render('home/index.html.twig', [

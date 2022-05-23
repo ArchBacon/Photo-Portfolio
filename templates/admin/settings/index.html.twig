@@ -1,13 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/admin_base.html.twig' %}
 
 {% block title %}Settings{% endblock %}
 
 {% block body %}
-    {% include 'shared/title.html.twig' with {
-        'title': 'Settings',
-        'subtitle': 'Configure your preferences',
-    } only %}
-
     <main class="m-8 md:mt-0">
         <div class="w-2/3">
             {{ form_start(form) }}

@@ -17,11 +17,11 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends BaseController
 {
-    #[Route(path: '/login', name: 'app_login')]
+    #[Route(path: '/login', name: 'login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute('app_admin');
+            return $this->redirectToRoute('admin_dashboard');
         }
 
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -36,17 +36,17 @@ class SecurityController extends BaseController
     }
 
     /** @noinspection PhpMethodMayBeStaticInspection */
-    #[Route(path: '/logout', name: 'app_logout')]
+    #[Route(path: '/logout', name: 'logout')]
     public function logout(): void
     {
         throw new LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 
-    #[Route('/register', name: 'app_register')]
+    #[Route('/register', name: 'register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute('app_admin');
+            return $this->redirectToRoute('admin_dashboard');
         }
 
         $user = new User();
@@ -66,7 +66,7 @@ class SecurityController extends BaseController
             $entityManager->flush();
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('login');
         }
 
         return $this->render('security/register.html.twig', [

@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
+use App\Controller\BaseController;
 use App\Entity\Settings;
 use App\Form\SettingsType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -13,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SettingsController extends BaseController
 {
-    #[Route('/admin/settings', name: 'app_settings')]
+    #[Route('/admin/settings', name: 'admin_settings')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $settings = $entityManager
@@ -29,7 +30,7 @@ class SettingsController extends BaseController
             $entityManager->flush();
         }
 
-        return $this->render('settings/index.html.twig', [
+        return $this->render('admin/settings/index.html.twig', [
             'form' => $form->createView(),
         ]);
     }

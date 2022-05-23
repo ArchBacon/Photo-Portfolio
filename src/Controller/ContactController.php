@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends BaseController
 {
-    #[Route('/contact', name: 'app_contact')]
+    #[Route('/contact', name: 'contact')]
     public function index(Request $request, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(ContactType::class, new Message());
@@ -27,7 +27,7 @@ class ContactController extends BaseController
 
             $this->addFlash('notice', 'Your message has been received!');
 
-            return $this->redirectToRoute('app_contact');
+            return $this->redirectToRoute('contact');
         }
 
         return $this->render('contact/index.html.twig', [
