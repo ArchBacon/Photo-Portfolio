@@ -9,18 +9,18 @@
     <br/>
 
     <div id="container">
-        <a id="browse" href="javascript:;">[Browse...]</a>
-        <a id="uploadfiles" href="javascript:;">[Start Upload]</a>
+        <a id="browse" href="javascript:">[Browse...]</a>
+        <a id="upload" href="javascript:">[Start Upload]</a>
     </div>
 
     <br/>
     <pre id="console"></pre>
 
     <script type="text/javascript">
-        var uploader = new plupload.Uploader({
+        const uploader = new plupload.Uploader({
             browse_button: 'browse',
             url: '{{ path('admin_upload') }}',
-            chunk_size: '2Mb',
+            chunk_size: '2mb',
             max_retries: 3,
             filters: {
                 mime_types: [
@@ -30,7 +30,7 @@
             init: {
                 PostInit: function () {
                     document.getElementById('filelist').innerHTML = '';
-                    document.getElementById('uploadfiles').onclick = function () {
+                    document.getElementById('upload').onclick = function () {
                         uploader.start();
                         return false;
                     };
