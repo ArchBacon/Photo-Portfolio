@@ -1,0 +1,57 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Hello UploadController!{% endblock %}
+
+{% block body %}
+    <script src="{{ asset('js/plupload.full.min.js') }}"></script>
+
+    <ul id="filelist"></ul>
+    <br/>
+
+    <div id="container">
+        <a id="browse" href="javascript:;">[Browse...]</a>
+        <a id="uploadfiles" href="javascript:;">[Start Upload]</a>
+    </div>
+
+    <br/>
+    <pre id="console"></pre>
+
+    <script type="text/javascript">
+        var uploader = new plupload.Uploader({
+            browse_button: 'browse',
+            url: '{{ path('admin_upload') }}',
+            chunk_size: '2Mb',
+            max_retries: 3,
+            filters: {
+                mime_types: [
+                    {title: "Image files", extensions: "jpg,gif,png"},
+                ],
+            },
+            init: {
+                PostInit: function () {
+                    document.getElementById('filelist').innerHTML = '';
+                    document.getElementById('uploadfiles').onclick = function () {
+                        uploader.start();
+                        return false;
+                    };
+                },
+                FilesAdded: function (up, files) {
+                    plupload.each(files, function (file) {
+                        document.getElementById('filelist').innerHTML += '<div id="' + file.id + '">' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b></div>';
+                    });
+                },
+                UploadProgress: function (up, file) {
+                    document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
+                },
+                ChunkUploaded: function (up, file, info) {
+                    // do some chunk related stuff
+                },
+                Error: function (up, err) {
+                    document.getElementById('console').appendChild(document.createTextNode("\nError #" + err.code + ": " + err.message));
+                }
+            }
+        });
+
+        uploader.init();
+    </script>
+{% endblock %}
