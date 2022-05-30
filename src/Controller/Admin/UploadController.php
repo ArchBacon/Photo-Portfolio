@@ -24,6 +24,8 @@ class UploadController extends AbstractController
             $uploader->tryAppendChunk();
 
             if ($uploader->isComplete() && $uploader->save()) {
+                // TODO: Save file to DB
+
                 return new Response(sprintf('upload finished. saved to %s', $uploader->lastSavedFile()));
             }
 
