@@ -90,12 +90,21 @@ class Plupload
      */
     public function save(): bool
     {
-        $this->uniqueFileName = Uuid::uuid4()->toString();
+        $this->uniqueFileName = Uuid::uuid4()->toString() . '.' . $this->fileExtension();
 
         return rename(
             "{$this->container->get('tmp')}uploads\\{$this->fileName()}.part",
-            $this->container->get('uploads') . $this->uniqueFileName() . '.' . $this->fileExtension()
+            $this->container->get('uploads') . $this->uniqueFileName()
         );
+    }
+
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function lastSavedFile(): string
+    {
+        return $this->container->get('uploads') . $this->uniqueFileName();
     }
 
     public function fileName(): string
