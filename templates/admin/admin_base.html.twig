@@ -1,3 +1,5 @@
+{% import _self as sidebar %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,17 +17,52 @@
     {% endblock %}
 
     {% block javascripts %}
-        {# {{ encore_entry_script_tags('app') }} #}
+        {{ encore_entry_script_tags('app') }}
         <script src="{{ asset('js/feather.min.js') }}"></script>
     {% endblock %}
 </head>
-<body class="bg-black font-montserrat text-neutral-400 flex flex-col relative min-h-screen pb-28 overflow-y-auto
-                before:fixed before:left-0 before:top-0 before:w-screen before:h-screen before:-z-10 before:content-['']">
+<body class="flex flex-col relative min-h-screen bg-zinc-900 text-neutral-300">
+    <div class="flex flex-col">
+        <div class="z-50 flex h-[72px] min-w-full flex-row items-center px-4"></div>
+    </div>
 
-    {% block body %}{% endblock %}
+    <div class="flex min-h-0 flex-1">
+        <div class="absolute flex h-screen-minus-navigation flex-col gap-2 rounded-xl sm:relative sm:w-[264px] sm:rounded-none sm:bg-transparent none translate-x-[-100%] transition-transform sm:translate-x-0">
+            <div class="h-6"></div>
+            {{ sidebar.route('Gallery', path('home')) }}
+            {{ sidebar.route('Contact', path('contact')) }}
 
-    <script>
-        feather.replace()
-    </script>
+            <hr class="border-neutral-500">
+
+            {{ sidebar.route('Dashboard', path('admin_dashboard')) }}
+            {{ sidebar.route('Upload image', path('admin_upload')) }}
+            {{ sidebar.route('Profile', '#') }}
+            {{ sidebar.route('Settings', path('admin_settings')) }}
+
+            <hr class="border-neutral-500">
+
+            {{ sidebar.route('Logout', path('logout')) }}
+        </div>
+        <div class="flex w-full flex-row">
+            <div class="flex w-full flex-col rounded-tl-3xl bg-zinc-800 pl-4 pr-4 pt-6 shadow-xl shadow-black md:pl-16 md:pt-12 md:pr-8 flex-grow overflow-y-auto relative">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+
+{% macro route(name, route) %}
+    <a href="{{ route }}">
+        <div class="h-auto w-full max-w-xs cursor-pointer py-2.5 bg-indigo-50">
+            <div class="flex w-full flex-row items-center px-3">
+                <div class="relative flex items-center justify-center overflow-hidden bg-indigo-100 rounded-lg" style="width: 24px; height: 24px;">
+                    <div class="z-10">
+                        <span class="text-sm flex items-center font-bold leading-6 text-indigo-500"></span>
+                    </div>
+                </div>
+                <span class="ml-2 text-sm font-semibold leading-5 text-gray-700">{{ name }}</span>
+            </div>
+        </div>
+    </a>
+{% endmacro %}

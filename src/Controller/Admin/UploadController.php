@@ -6,21 +6,27 @@ namespace App\Controller\Admin;
 
 use App\Service\Plupload;
 use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class UploadController extends AbstractController
 {
-    /**
-     * @throws ContainerExceptionInterface
-     */
+
     #[Route('/admin/upload', name: 'admin_upload')]
     public function index(Plupload $uploader): Response
     {
 
         if ($uploader->isValid()) {
-            $uploader->tryAppendChunk();
+            try {
+                $uploader->tryAppendChunk();
+            } catch (NotFoundExceptionInterface $e) {
+                return new Response(sprintf('Upload error: %s.', $e->getMessage()), 409);
+            } catch (ContainerExceptionInterface $e) {
+                return new Response(sprintf('Container error: %s.', $e->getMessage()), 409);
+            }
+
             if ($uploader->isComplete() && $uploader->save()) {
                 return new Response('upload finished.');
             }

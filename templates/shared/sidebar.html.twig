@@ -17,15 +17,8 @@
     </section>
 
     <nav class="flex flex-col gap-2 text-right">
-        <a href="{{ path('home') }}" class="flex items-center h-12 hover:bg-zinc-800 px-4 rounded-lg">
-            <span class="w-full">See my works</span>
-            <span class="pl-4"><i data-feather="chevron-right"></i></span>
-        </a>
-
-        <a href="{{ path('contact') }}" class="flex items-center h-12 hover:bg-zinc-800 px-4 rounded-lg">
-            <span class="w-full">Get in touch</span>
-            <span class="pl-4"><i data-feather="chevron-right"></i></span>
-        </a>
+        {{ sidebar.route('See my works', path('home')) }}
+        {{ sidebar.route('Get in touch', path('contact')) }}
 
         {% if app.user %}
             <hr class="border-neutral-500">
