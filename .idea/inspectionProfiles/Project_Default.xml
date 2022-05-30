@@ -772,7 +772,7 @@
     <inspection_tool class="PhpMatchExpressionWithOnlyDefaultArmInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="PhpMemberCanBePulledUpInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="PhpMethodMayBeInaccessibleInLateStaticBindingInspection" enabled="true" level="ERROR" enabled_by_default="true" />
-    <inspection_tool class="PhpMethodMayBeStaticInspection" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="PhpMethodMayBeStaticInspection" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="PhpMethodNamingConventionInspection" enabled="true" level="ERROR" enabled_by_default="true">
       <option name="m_minLength" value="2" />
       <option name="m_maxLength" value="28" />

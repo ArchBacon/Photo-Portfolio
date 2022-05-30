@@ -13,19 +13,15 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UploadController extends AbstractController
 {
-
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     #[Route('/admin/upload', name: 'admin_upload')]
     public function index(Plupload $uploader): Response
     {
-
         if ($uploader->isValid()) {
-            try {
-                $uploader->tryAppendChunk();
-            } catch (NotFoundExceptionInterface $e) {
-                return new Response(sprintf('Upload error: %s.', $e->getMessage()), 409);
-            } catch (ContainerExceptionInterface $e) {
-                return new Response(sprintf('Container error: %s.', $e->getMessage()), 409);
-            }
+            $uploader->tryAppendChunk();
 
             if ($uploader->isComplete() && $uploader->save()) {
                 return new Response('upload finished.');

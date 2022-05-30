@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use JetBrains\PhpStorm\Pure;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Ramsey\Uuid\Uuid;
@@ -25,13 +26,13 @@ class Plupload
         $this->files = $_FILES;
         $this->uniqueFileName = null;
 
-        $uploadsDir = $this->container->get('tmp') . 'uploads\\';
+        $uploadsDir = $this->container->get('uploads');
         if (!file_exists($uploadsDir) && !mkdir($uploadsDir, 0777, true) && !is_dir($uploadsDir)) {
             throw new RuntimeException(sprintf('Directory "%s" was not created', $uploadsDir));
         }
 
         $galleryDir = $this->container->get('gallery');
-        if (!file_exists($galleryDir) && !mkdir($galleryDir, 0777, true) && !is_dir($galleryDir)) {
+        if (!file_exists($uploadsDir) && !mkdir($galleryDir, 0777, true) && !is_dir($galleryDir)) {
             throw new RuntimeException(sprintf('Directory "%s" was not created', $galleryDir));
         }
     }
@@ -47,7 +48,7 @@ class Plupload
      */
     public function tryAppendChunk(): void
     {
-        $file = fopen($this->container->get('gallery') . $this->fileName() . '.part', $this->chunkNumber() === 1 ? 'wb' : 'ab');
+        $file = fopen($this->container->get('uploads') . $this->fileName() . '.part', $this->chunkNumber() === 1 ? 'wb' : 'ab');
         $chunk = fopen($_FILES['file']['tmp_name'], 'rb');
         if ($chunk === false) {
             throw new UploadException('Failed to open input stream.');
@@ -63,6 +64,7 @@ class Plupload
         unlink($_FILES['file']['tmp_name']);
     }
 
+    #[Pure]
     public function isComplete(): bool
     {
         return $this->totalChunks() === 0 || $this->chunkNumber() === $this->totalChunks();
@@ -82,12 +84,16 @@ class Plupload
         return (int)$_REQUEST['chunk'] + 1;
     }
 
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function save(): bool
     {
         $this->uniqueFileName = Uuid::uuid4()->toString();
 
         return rename(
-            "{$this->container->get('tmp')}uploads\\{$this->fileName()}.part",
+            "{$this->container->get('uploads')}{$this->fileName()}.part",
             $this->container->get('gallery') . $this->uniqueFileName() . '.' . $this->fileExtension()
         );
     }
