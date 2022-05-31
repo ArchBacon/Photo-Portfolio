@@ -64,6 +64,15 @@ class Plupload
         unlink($_FILES['file']['tmp_name']);
     }
 
+    public function chunkNumber(): int
+    {
+        if (!isset($_REQUEST['chunk'])) {
+            return 0;
+        }
+
+        return (int)$_REQUEST['chunk'] + 1;
+    }
+
     #[Pure]
     public function isComplete(): bool
     {
@@ -73,15 +82,6 @@ class Plupload
     public function totalChunks(): int
     {
         return isset($_REQUEST['chunks']) ? (int)$_REQUEST['chunks'] : 0;
-    }
-
-    public function chunkNumber(): int
-    {
-        if (!isset($_REQUEST['chunk'])) {
-            return 0;
-        }
-
-        return (int)$_REQUEST['chunk'] + 1;
     }
 
     /**
@@ -98,6 +98,16 @@ class Plupload
         );
     }
 
+    public function fileExtension(): string
+    {
+        return pathinfo($this->fileName(), PATHINFO_EXTENSION);
+    }
+
+    public function uniqueFileName(): ?string
+    {
+        return $this->uniqueFileName;
+    }
+
     /**
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
@@ -107,18 +117,14 @@ class Plupload
         return $this->container->get('uploads') . $this->uniqueFileName();
     }
 
-    public function fileName(): string
+    #[Pure]
+    public function lastSavedFilename(): string
+    {
+        return $this->uniqueFileName();
+    }
+
+    private function fileName(): string
     {
         return $_REQUEST['name'] ?? $_FILES['file']['name'];
-    }
-
-    public function fileExtension(): string
-    {
-        return pathinfo($this->fileName(), PATHINFO_EXTENSION);
-    }
-
-    public function uniqueFileName(): ?string
-    {
-        return $this->uniqueFileName;
     }
 }

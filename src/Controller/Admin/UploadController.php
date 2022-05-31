@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller\Admin;
 
+use App\Entity\Image;
+use App\Repository\ImageRepository;
 use App\Service\Plupload;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
@@ -18,13 +20,13 @@ class UploadController extends AbstractController
      * @throws NotFoundExceptionInterface
      */
     #[Route('/admin/upload', name: 'admin_upload')]
-    public function index(Plupload $uploader): Response
+    public function index(Plupload $uploader, ImageRepository $imageRepository): Response
     {
         if ($uploader->isValid()) {
             $uploader->tryAppendChunk();
 
             if ($uploader->isComplete() && $uploader->save()) {
-                // TODO: Save file to DB
+                $imageRepository->add(new Image($uploader->lastSavedFilename()), true);
 
                 return new Response(sprintf('upload finished. saved to %s', $uploader->lastSavedFile()));
             }
