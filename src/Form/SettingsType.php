@@ -30,6 +30,7 @@ class SettingsType extends AbstractType
             ])
             ->add('displayAlbums', CheckboxType::class, [
                 'required' => false,
+                'disabled' => true,
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Save',
