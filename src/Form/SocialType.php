@@ -27,7 +27,7 @@ class SocialType extends AbstractType
             ])
             ->add('active', CheckboxType::class, [
                 'required' => false,
-//                'label' => false,
+                // 'label' => false,
             ]);
     }
 

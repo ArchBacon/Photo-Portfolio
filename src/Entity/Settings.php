@@ -24,8 +24,20 @@ class Settings
     #[ORM\Column(type: 'string', length: 255)]
     private string $appName;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $name = 'Lorem Ipsilus';
+
     #[ORM\Column(type: 'boolean')]
     private bool $displayAlbums = false;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $occupation = 'Photographer';
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $avatar = 'default.png';
+
+    #[ORM\Column(type: 'text')]
+    private string $introduction = 'Lorem ipsum dolor sit amet.';
 
     #[Pure]
     public function __construct()
@@ -80,6 +92,18 @@ class Settings
         return $this;
     }
 
+    public function name(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
     public function isDisplayAlbums(): bool
     {
         return $this->displayAlbums;
@@ -88,6 +112,42 @@ class Settings
     public function setDisplayAlbums(bool $displayAlbums): self
     {
         $this->displayAlbums = $displayAlbums;
+
+        return $this;
+    }
+
+    public function occupation(): string
+    {
+        return $this->occupation;
+    }
+
+    public function setOccupation(string $occupation): self
+    {
+        $this->occupation = $occupation;
+
+        return $this;
+    }
+
+    public function avatar(): string
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(string $avatar): self
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    public function introduction(): string
+    {
+        return $this->introduction;
+    }
+
+    public function setIntroduction(string $introduction): self
+    {
+        $this->introduction = $introduction;
 
         return $this;
     }

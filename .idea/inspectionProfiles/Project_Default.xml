@@ -716,7 +716,7 @@
     <inspection_tool class="PhpExpressionWithoutClarifyingParenthesesInspection" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="PhpFeatureEnvyLocalInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="PhpFieldAssignmentTypeMismatchInspection" enabled="true" level="ERROR" enabled_by_default="true" />
-    <inspection_tool class="PhpFieldCanBePromotedInspection" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="PhpFieldCanBePromotedInspection" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="PhpFieldImmediatelyRewrittenInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="PhpForeachArrayIsUsedAsValueInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="PhpForeachNestedOuterKeyValueVariablesConflictInspection" enabled="true" level="ERROR" enabled_by_default="true" />
