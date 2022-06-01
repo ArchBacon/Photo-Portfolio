@@ -55,6 +55,18 @@ class ImageRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    /**
+     * @return Image[] Returns an array of Image objects
+     */
+    public function findAllWithoutThumbs(): array
+    {
+        return $this->createQueryBuilder('i')
+            ->andWhere('i.hasThumbs = :hasThumbs')
+            ->setParameter('hasThumbs', false)
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Image[] Returns an array of Image objects
 //     */

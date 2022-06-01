@@ -1,5 +1,21 @@
+{% import _self as dasboard %}
+
 {% extends 'admin/admin_base.html.twig' %}
 
 {% block title %}Dashboard{% endblock %}
 
-{% block body %}{% endblock %}
+{% block body %}
+    <div class="flex flex-wrap gap-4">
+        {{ dasboard.widget('Public images', '12', path('home'), 'View Gallery') }}
+        {{ dasboard.widget('Total uploads', '15', '#', 'Manage uploads') }}
+        {{ dasboard.widget('Missing thumbnails', '3', '#', 'Generate thumbnail') }}
+    </div>
+
+    {% macro widget(name, value, route, route_text) %}
+        <div class="p-5 w-72 h-36 grid grid-rows-6 rounded-lg shadow-xl bg-zinc-700 relative">
+            <h2 class="font-bold text-2xl">{{ name }}</h2>
+            <p class="mt-4 ml-4">{{ value }}</p>
+            <a href="{{ route }}" class="absolute bottom-4 right-6 text-sm hover:underline">{{ route_text }}</a>
+        </div>
+    {% endmacro %}
+{% endblock %}
