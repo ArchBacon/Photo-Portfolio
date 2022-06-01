@@ -8,7 +8,7 @@
     <div class="flex flex-wrap gap-4">
         {{ dasboard.widget('Public images', public_images, path('home'), 'View Gallery') }}
         {{ dasboard.widget('Total uploads', total_uploads, '#', 'Manage uploads') }}
-        {{ dasboard.widget('Missing thumbnails', missing_thumbnails, '#', 'Generate thumbnail') }}
+        {{ dasboard.widget('Missing thumbnails', missing_thumbnails, path('admin_crop'), 'Generate thumbnail') }}
     </div>
 
     {% macro widget(name, value, route, route_text) %}

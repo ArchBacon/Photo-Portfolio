@@ -71,6 +71,18 @@ class ImageRepository extends ServiceEntityRepository
      * @throws NonUniqueResultException
      * @throws NoResultException
      */
+    public function findOneWithoutThumbs(): Image
+    {
+        return $this->createQueryBuilder('i')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getSingleResult();
+    }
+
+    /**
+     * @throws NonUniqueResultException
+     * @throws NoResultException
+     */
     public function countAll(): int
     {
         return $this->createQueryBuilder('i')

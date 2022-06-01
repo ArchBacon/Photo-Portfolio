@@ -7,6 +7,8 @@ namespace App\Controller\Admin;
 use App\Entity\Image;
 use App\Repository\ImageRepository;
 use App\Service\Plupload;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -39,5 +41,17 @@ class UploadController extends AbstractController
         }
 
         return $this->render('admin/upload/index.html.twig');
+    }
+
+    /**
+     * @throws NonUniqueResultException
+     * @throws NoResultException
+     */
+    #[Route('/admin/crop', name: 'admin_crop')]
+    public function crop(ImageRepository $imageRepository): Response
+    {
+        return $this->render('admin/upload/crop.html.twig', [
+            'file' => $imageRepository->findOneWithoutThumbs(),
+        ]);
     }
 }

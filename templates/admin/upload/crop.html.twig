@@ -1,0 +1,10 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Crop{% endblock %}
+
+{% block body %}
+    <link  href="node_modules/cropperjs/src/css/cropper.scss" rel="stylesheet">
+    <script src="node_modules/cropperjs/src/js/cropper.js"></script>
+
+    {{ dump(file) }}
+{% endblock %}
