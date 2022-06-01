@@ -6,9 +6,9 @@
 
 {% block body %}
     <div class="flex flex-wrap gap-4">
-        {{ dasboard.widget('Public images', '12', path('home'), 'View Gallery') }}
-        {{ dasboard.widget('Total uploads', '15', '#', 'Manage uploads') }}
-        {{ dasboard.widget('Missing thumbnails', '3', '#', 'Generate thumbnail') }}
+        {{ dasboard.widget('Public images', public_images, path('home'), 'View Gallery') }}
+        {{ dasboard.widget('Total uploads', total_uploads, '#', 'Manage uploads') }}
+        {{ dasboard.widget('Missing thumbnails', missing_thumbnails, '#', 'Generate thumbnail') }}
     </div>
 
     {% macro widget(name, value, route, route_text) %}

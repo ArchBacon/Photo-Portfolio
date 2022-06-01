@@ -6,6 +6,8 @@ namespace App\Repository;
 
 use App\Entity\Image;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -61,10 +63,48 @@ class ImageRepository extends ServiceEntityRepository
     public function findAllWithoutThumbs(): array
     {
         return $this->createQueryBuilder('i')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @throws NonUniqueResultException
+     * @throws NoResultException
+     */
+    public function countAll(): int
+    {
+        return $this->createQueryBuilder('i')
+            ->select('count(i.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * @throws NonUniqueResultException
+     * @throws NoResultException
+     */
+    public function countPublic(): int
+    {
+        return $this->createQueryBuilder('i')
+            ->select('count(i.id)')
+            ->andWhere('i.public = :public')
+            ->setParameter('public', true)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * @throws NonUniqueResultException
+     * @throws NoResultException
+     */
+    public function countMissingThumbs(): int
+    {
+        return $this->createQueryBuilder('i')
+            ->select('count(i.id)')
             ->andWhere('i.hasThumbs = :hasThumbs')
             ->setParameter('hasThumbs', false)
             ->getQuery()
-            ->getResult();
+            ->getSingleScalarResult();
     }
 
 //    /**

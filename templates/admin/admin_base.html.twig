@@ -17,7 +17,7 @@
     {% endblock %}
 
     {% block javascripts %}
-{#        {{ encore_entry_script_tags('app') }}#}
+        {#        {{ encore_entry_script_tags('app') }} #}
         <script src="{{ asset('js/feather.min.js') }}"></script>
     {% endblock %}
 </head>
@@ -28,20 +28,21 @@
 
     <div class="flex min-h-0 flex-1">
         <div class="absolute flex h-screen-minus-navigation flex-col gap-2 rounded-xl sm:relative sm:w-[264px] sm:rounded-none sm:bg-transparent none translate-x-[-100%] transition-transform sm:translate-x-0">
-            <div class="h-6"></div>
-            {{ sidebar.route('Gallery', path('home')) }}
-            {{ sidebar.route('Contact', path('contact')) }}
+            <nav class="flex flex-col gap-2 text-right mt-6">
+                {{ sidebar.route('Gallery', path('home')) }}
+                {{ sidebar.route('Contact', path('contact')) }}
 
-            <hr class="border-neutral-500">
+                <hr class="border-neutral-500">
 
-            {{ sidebar.route('Dashboard', path('admin_dashboard')) }}
-            {{ sidebar.route('Upload image', path('admin_upload')) }}
-            {{ sidebar.route('Profile', '#') }}
-            {{ sidebar.route('Settings', path('admin_settings')) }}
+                {{ sidebar.route('Dashboard', path('admin_dashboard')) }}
+                {{ sidebar.route('Upload image', path('admin_upload')) }}
+                {{ sidebar.route('Profile', '#') }}
+                {{ sidebar.route('Settings', path('admin_settings')) }}
 
-            <hr class="border-neutral-500">
+                <hr class="border-neutral-500">
 
-            {{ sidebar.route('Logout', path('logout')) }}
+                {{ sidebar.route('Logout', path('logout')) }}
+            </nav>
         </div>
         <div class="flex w-full flex-row">
             <div class="flex w-full flex-col rounded-tl-3xl bg-zinc-800 pl-4 pr-4 pt-6 shadow-xl shadow-black md:pl-16 md:pt-12 md:pr-8 flex-grow overflow-y-auto relative">
@@ -57,16 +58,23 @@
 </html>
 
 {% macro route(name, route) %}
-    <a href="{{ route }}">
-        <div class="h-auto w-full max-w-xs cursor-pointer py-2.5 bg-indigo-50">
-            <div class="flex w-full flex-row items-center px-3">
-                <div class="relative flex items-center justify-center overflow-hidden bg-indigo-100 rounded-lg" style="width: 24px; height: 24px;">
-                    <div class="z-10">
-                        <span class="text-sm flex items-center font-bold leading-6 text-indigo-500"></span>
-                    </div>
-                </div>
-                <span class="ml-2 text-sm font-semibold leading-5 text-gray-700">{{ name }}</span>
-            </div>
-        </div>
+    <a href="{{ route }}" class="flex items-center h-12 hover:bg-zinc-800 px-4 rounded-lg">
+        <span class="w-full">{{ name }}</span>
+        <span class="pl-4"><i data-feather="chevron-right"></i></span>
     </a>
 {% endmacro %}
+
+{# {% macro route(name, route) %} #}
+{#    <a href="{{ route }}"> #}
+{#        <div class="h-auto w-full max-w-xs cursor-pointer py-2.5 bg-indigo-50"> #}
+{#            <div class="flex w-full flex-row items-center px-3"> #}
+{#                <div class="relative flex items-center justify-center overflow-hidden bg-indigo-100 rounded-lg" style="width: 24px; height: 24px;"> #}
+{#                    <div class="z-10"> #}
+{#                        <span class="text-sm flex items-center font-bold leading-6 text-indigo-500"></span> #}
+{#                    </div> #}
+{#                </div> #}
+{#                <span class="ml-2 text-sm font-semibold leading-5 text-gray-700">{{ name }}</span> #}
+{#            </div> #}
+{#        </div> #}
+{#    </a> #}
+{# {% endmacro %} #}
